@@ -1,7 +1,7 @@
 from app import app
 
 if __name__=="__main__":
-    app.run()
+    app.run(debug=True)
     
 """
 Slide Show Changing Every 2s interval
