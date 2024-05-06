@@ -4099,9 +4099,6 @@
 		left: 178px;
 		top: 0px;
 		overflow: visible;
-		--web-animation: fadein undefineds undefined;
-		--web-action-type: page;
-		--web-action-target: info;
 		cursor: pointer;
 	}
 	#LoginRegister_j {
@@ -8482,13 +8479,15 @@ window.application = new Application();
 		</div>
 	</div>
 	<div id="Outside_Buttons">
-		<div onclick="application.goToTargetView(event)" id="Register_j" class="Register">
-			<div id="LoginRegister_j">
-				<span>{{session.username}}</span>
+		<a href="logout">	
+			<div id="Register_j" class="Register">
+				<div id="LoginRegister_j">
+					<span>{{session.username}}</span>
+				</div>
+				<img id="ID9035990_person_circle_sharp_" src="{{ url_for('static', filename='User_Profiles/default.png') }}" srcset="{{ url_for('static', filename='User_Profiles/default.png') }} 1x, {{ url_for('static', filename='User_Profiles/default.png') }} 2x">
+				<!--<img src="avatar.png" alt="Avatar" class="avatar">-->
 			</div>
-			<img id="ID9035990_person_circle_sharp_" src="{{ url_for('static', filename='User_Profiles/default.png') }}" srcset="{{ url_for('static', filename='User_Profiles/default.png') }} 1x, {{ url_for('static', filename='User_Profiles/default.png') }} 2x">
-			<!--<img src="avatar.png" alt="Avatar" class="avatar">-->
-		</div>
+		</a>
 		<div id="Feedback" class="Feedback">
 			<div id="Feedback_ka">
 				<span>Feedback</span>

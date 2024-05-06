@@ -391,7 +391,8 @@
 		height: 967px;
 		left: 505px;
 		top: 385px;
-		overflow: hidden;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	#Contents_bcb {
 		position: absolute;
@@ -539,6 +540,7 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Rectangle_87 {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 276px;
@@ -6439,605 +6441,603 @@ window.application = new Application();
 		</div>
 	</div>
 	<div id="Scroll_Group_4">
-		<div id="Contents_bcb">
-			<div id="Contents_bcc" class="Contents">
-				<svg class="Rectangle_84">
-					<rect id="Rectangle_84" rx="0" ry="0" x="0" y="0" width="1292" height="677">
-					</rect>
-				</svg>
-				<svg class="Line_93" viewBox="0 0 1252 1">
-					<path id="Line_93" d="M 0 0 L 1252 0">
-					</path>
-				</svg>
-				<div id="Buttons_bcf">
-					<div id="View_Shop_Button_bcg">
-						<svg class="Rectangle_85">
-							<rect id="Rectangle_85" rx="0" ry="0" x="0" y="0" width="146" height="37">
-							</rect>
-						</svg>
-						<div id="View_Shop_bci">
-							<span>View Shop</span>
-						</div>
-						<img id="ID352513_local_print_shop_icon_bcj" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bcj.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bcj.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bcj@2x.png')}} 2x">
-							
-					</div>
-					<div id="Rate_Button_bck">
-						<svg class="Rectangle_86_bcm">
-							<linearGradient id="Rectangle_86_bcm" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-								<stop offset="0" stop-color="#6a6a6a" stop-opacity="1"></stop>
-								<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
-							</linearGradient>
-							<rect id="Rectangle_86_bcm" rx="10" ry="10" x="0" y="0" width="206" height="69">
-							</rect>
-						</svg>
-						<div id="Delete">
-							<span>Delete</span>
-						</div>
-					</div>
-				</div>
-				<div id="Shop_Name_bco">
-					<svg class="Rectangle_87">
-						<rect id="Rectangle_87" rx="0" ry="0" x="0" y="0" width="276" height="37">
+		<div id="Contents_bcc" class="Contents">
+			<svg class="Rectangle_84">
+				<rect id="Rectangle_84" rx="0" ry="0" x="0" y="0" width="1292" height="677">
+				</rect>
+			</svg>
+			<svg class="Line_93" viewBox="0 0 1252 1">
+				<path id="Line_93" d="M 0 0 L 1252 0">
+				</path>
+			</svg>
+			<div id="Buttons_bcf">
+				<div id="View_Shop_Button_bcg">
+					<svg class="Rectangle_85">
+						<rect id="Rectangle_85" rx="0" ry="0" x="0" y="0" width="146" height="37">
 						</rect>
 					</svg>
-					<img id="ID352513_local_print_shop_icon_bcq" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bcq.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bcq.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bcq@2x.png')}} 2x">
+					<div id="View_Shop_bci">
+						<span>View Shop</span>
+					</div>
+					<img id="ID352513_local_print_shop_icon_bcj" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bcj.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bcj.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bcj@2x.png')}} 2x">
 						
 				</div>
-				<div id="Print_Order_Configuration_bcr">
-					<div id="Base_bcs">
-						<svg class="Rectangle_88">
-							<rect id="Rectangle_88" rx="30" ry="30" x="0" y="0" width="389" height="502">
-							</rect>
-						</svg>
-						<svg class="Rectangle_89">
-							<rect id="Rectangle_89" rx="0" ry="0" x="0" y="0" width="158" height="30">
-							</rect>
-						</svg>
-						<div id="Order_Details_bcv">
-							<span>Order Details</span>
-						</div>
-						<div id="Paper_Size_bcw">
-							<svg class="Line_94" viewBox="0 0 348.411 1">
-								<path id="Line_94" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Paper_Size_bcy">
-								<span>Paper Size</span>
-							</div>
-							<div id="Letter_85_x_11_bcz">
-								<span>Letter 8.5" x 11"</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bc">
-							<svg class="Line_95" viewBox="0 0 348.411 1">
-								<path id="Line_95" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Print_Pages_bc">
-								<span>Print Pages</span>
-							</div>
-							<div id="All_Pages__bc">
-								<span>All Pages </span>
-							</div>
-						</div>
-						<div id="Paper_Size_bda">
-							<svg class="Line_96" viewBox="0 0 348.411 1">
-								<path id="Line_96" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Print_Sides_bc">
-								<span>Print Sides</span>
-							</div>
-							<div id="Print_One_Sided_bc">
-								<span>Print One Sided</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bdb">
-							<svg class="Line_97" viewBox="0 0 348.411 1">
-								<path id="Line_97" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Orientation_bda">
-								<span>Orientation</span>
-							</div>
-							<div id="Portrait_bdb">
-								<span>Portrait</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bdc">
-							<svg class="Line_98" viewBox="0 0 348.411 1">
-								<path id="Line_98" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Paper_Type_bde">
-								<span>Paper Type</span>
-							</div>
-							<div id="Plain_Paper_bdf">
-								<span>Plain Paper</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bdg">
-							<svg class="Line_99" viewBox="0 0 348.411 1">
-								<path id="Line_99" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Copies_bdi">
-								<span>Copies</span>
-							</div>
-							<div id="ID10_bdj">
-								<span>10</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bdk">
-							<svg class="Line_100" viewBox="0 0 348.411 1">
-								<path id="Line_100" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Grayscale_Printing_bdm">
-								<span>Grayscale Printing</span>
-							</div>
-							<div id="No_bdn">
-								<span>No</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bdo">
-							<div id="Filename_bdp">
-								<span>Filename</span>
-							</div>
-							<div id="assignmentpdf_bdq">
-								<span>assignment.pdf</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="Price_Cost_bdr">
-					<svg class="Rectangle_90">
-						<rect id="Rectangle_90" rx="0" ry="0" x="0" y="0" width="590" height="186">
+				<div id="Rate_Button_bck">
+					<svg class="Rectangle_86_bcm">
+						<linearGradient id="Rectangle_86_bcm" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+							<stop offset="0" stop-color="#6a6a6a" stop-opacity="1"></stop>
+							<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
+						</linearGradient>
+						<rect id="Rectangle_86_bcm" rx="10" ry="10" x="0" y="0" width="206" height="69">
 						</rect>
 					</svg>
-					<div id="Print_Cost_____________________bdt">
-						<span>Print Cost                                                 ₱280</span>
+					<div id="Delete">
+						<span>Delete</span>
 					</div>
-					<div id="Total__________________________bdu">
-						<span>Total                                                      </span><span style="color:rgba(243,34,138,1);">₱325  </span>
-					</div>
-					<div id="Shipping_Cost__________________bdv">
-						<span>Shipping Cost                                           ₱45</span>
-					</div>
-					<div id="Payment_Details_bdw">
-						<span>Payment Details</span>
-					</div>
-					<img id="ID8665241_clipboard_list_icon_bdx" src="{{ url_for('static', filename='images/ID8665241_clipboard_list_icon_bdx.png') }}" srcset="{{url_for('static', filename='images/ID8665241_clipboard_list_icon_bdx.png') }} 1x, {{url_for('static', filename='images/ID8665241_clipboard_list_icon_bdx@2x.png')}} 2x">
-						
-				</div>
-				<div id="Delivery_Address_bdy">
-					<svg class="Rectangle_91">
-						<rect id="Rectangle_91" rx="0" ry="0" x="0" y="0" width="591" height="119">
-						</rect>
-					</svg>
-					<div id="Delivery_Address_bd">
-						<span>Delivery Address:</span>
-					</div>
-					<svg class="Rectangle_92">
-						<rect id="Rectangle_92" rx="0" ry="0" x="0" y="0" width="142" height="119">
-						</rect>
-					</svg>
-					<div id="John_Doe__63_912_345_6789_1234_bd">
-						<span>John Doe | (+63) 912 345 6789<br/>1234 Quezon Avenue, Quezon City, Metro Manila, 1008 </span>
-					</div>
-					<svg class="Ellipse_17">
-						<ellipse id="Ellipse_17" rx="37.5" ry="38" cx="37.5" cy="38">
-						</ellipse>
-					</svg>
-					<img id="ID2849827_pointer_map_location_bd" src="{{ url_for('static', filename='images/ID2849827_pointer_map_location_bd.png') }}" srcset="{{url_for('static', filename='images/ID2849827_pointer_map_location_bd.png') }} 1x, {{url_for('static', filename='images/ID2849827_pointer_map_location_bd@2x.png')}} 2x">
-						
-				</div>
-				<div id="Component_19__1" class="Component_19___1">
-					<svg class="Rectangle_81">
-						<rect id="Rectangle_81" rx="5" ry="5" x="0" y="0" width="45" height="45">
-						</rect>
-					</svg>
 				</div>
 			</div>
-			<div id="Contents_bd" class="Contents">
-				<svg class="Rectangle_93">
-					<rect id="Rectangle_93" rx="0" ry="0" x="0" y="0" width="1292" height="677">
+			<div id="Shop_Name_bco">
+				<svg class="Rectangle_87">
+					<rect id="Rectangle_87" rx="0" ry="0" x="0" y="0" width="276" height="37">
 					</rect>
 				</svg>
-				<svg class="Line_101" viewBox="0 0 1252 1">
-					<path id="Line_101" d="M 0 0 L 1252 0">
-					</path>
-				</svg>
-				<div id="Buttons_bea">
-					<div id="View_Shop_Button_beb">
-						<svg class="Rectangle_94">
-							<rect id="Rectangle_94" rx="0" ry="0" x="0" y="0" width="146" height="37">
-							</rect>
+				<img id="ID352513_local_print_shop_icon_bcq" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bcq.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bcq.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bcq@2x.png')}} 2x">
+					
+			</div>
+			<div id="Print_Order_Configuration_bcr">
+				<div id="Base_bcs">
+					<svg class="Rectangle_88">
+						<rect id="Rectangle_88" rx="30" ry="30" x="0" y="0" width="389" height="502">
+						</rect>
+					</svg>
+					<svg class="Rectangle_89">
+						<rect id="Rectangle_89" rx="0" ry="0" x="0" y="0" width="158" height="30">
+						</rect>
+					</svg>
+					<div id="Order_Details_bcv">
+						<span>Order Details</span>
+					</div>
+					<div id="Paper_Size_bcw">
+						<svg class="Line_94" viewBox="0 0 348.411 1">
+							<path id="Line_94" d="M 0 0 L 348.410888671875 0">
+							</path>
 						</svg>
-						<div id="View_Shop_bed">
-							<span>View Shop</span>
+						<div id="Paper_Size_bcy">
+							<span>Paper Size</span>
 						</div>
-						<img id="ID352513_local_print_shop_icon_bee" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bee.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bee.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bee@2x.png')}} 2x">
-							
+						<div id="Letter_85_x_11_bcz">
+							<span>Letter 8.5" x 11"</span>
+						</div>
 					</div>
-					<div id="Rate_Button_bef">
-						<svg class="Rectangle_95_beh">
-							<linearGradient id="Rectangle_95_beh" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-								<stop offset="0" stop-color="#6a6a6a" stop-opacity="1"></stop>
-								<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
-							</linearGradient>
-							<rect id="Rectangle_95_beh" rx="10" ry="10" x="0" y="0" width="206" height="69">
-							</rect>
+					<div id="Paper_Size_bc">
+						<svg class="Line_95" viewBox="0 0 348.411 1">
+							<path id="Line_95" d="M 0 0 L 348.410888671875 0">
+							</path>
 						</svg>
-						<div id="Delete_bei">
-							<span>Delete</span>
+						<div id="Print_Pages_bc">
+							<span>Print Pages</span>
+						</div>
+						<div id="All_Pages__bc">
+							<span>All Pages </span>
 						</div>
 					</div>
-				</div>
-				<div id="Shop_Name_bej">
-					<svg class="Rectangle_96">
-						<rect id="Rectangle_96" rx="0" ry="0" x="0" y="0" width="276" height="37">
-						</rect>
-					</svg>
-					<img id="ID352513_local_print_shop_icon_bel" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bel.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bel.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bel@2x.png')}} 2x">
-						
-				</div>
-				<div id="Print_Order_Configuration_bem">
-					<div id="Base_ben">
-						<svg class="Rectangle_97">
-							<rect id="Rectangle_97" rx="30" ry="30" x="0" y="0" width="389" height="502">
-							</rect>
+					<div id="Paper_Size_bda">
+						<svg class="Line_96" viewBox="0 0 348.411 1">
+							<path id="Line_96" d="M 0 0 L 348.410888671875 0">
+							</path>
 						</svg>
-						<svg class="Rectangle_98">
-							<rect id="Rectangle_98" rx="0" ry="0" x="0" y="0" width="158" height="30">
-							</rect>
+						<div id="Print_Sides_bc">
+							<span>Print Sides</span>
+						</div>
+						<div id="Print_One_Sided_bc">
+							<span>Print One Sided</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bdb">
+						<svg class="Line_97" viewBox="0 0 348.411 1">
+							<path id="Line_97" d="M 0 0 L 348.410888671875 0">
+							</path>
 						</svg>
-						<div id="Order_Details_beq">
-							<span>Order Details</span>
+						<div id="Orientation_bda">
+							<span>Orientation</span>
 						</div>
-						<div id="Paper_Size_ber">
-							<svg class="Line_102" viewBox="0 0 348.411 1">
-								<path id="Line_102" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Paper_Size_bet">
-								<span>Paper Size</span>
-							</div>
-							<div id="Letter_85_x_11_beu">
-								<span>Letter 8.5" x 11"</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bev">
-							<svg class="Line_103" viewBox="0 0 348.411 1">
-								<path id="Line_103" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Print_Pages_bex">
-								<span>Print Pages</span>
-							</div>
-							<div id="All_Pages__bey">
-								<span>All Pages </span>
-							</div>
-						</div>
-						<div id="Paper_Size_bez">
-							<svg class="Line_104" viewBox="0 0 348.411 1">
-								<path id="Line_104" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Print_Sides_be">
-								<span>Print Sides</span>
-							</div>
-							<div id="Print_One_Sided_be">
-								<span>Print One Sided</span>
-							</div>
-						</div>
-						<div id="Paper_Size_be">
-							<svg class="Line_105" viewBox="0 0 348.411 1">
-								<path id="Line_105" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Orientation_be">
-								<span>Orientation</span>
-							</div>
-							<div id="Portrait_be">
-								<span>Portrait</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bfa">
-							<svg class="Line_106" viewBox="0 0 348.411 1">
-								<path id="Line_106" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Paper_Type_be">
-								<span>Paper Type</span>
-							</div>
-							<div id="Plain_Paper_bfa">
-								<span>Plain Paper</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bfb">
-							<svg class="Line_107" viewBox="0 0 348.411 1">
-								<path id="Line_107" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Copies_bfd">
-								<span>Copies</span>
-							</div>
-							<div id="ID10_bfe">
-								<span>10</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bff">
-							<svg class="Line_108" viewBox="0 0 348.411 1">
-								<path id="Line_108" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Grayscale_Printing_bfh">
-								<span>Grayscale Printing</span>
-							</div>
-							<div id="No_bfi">
-								<span>No</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bfj">
-							<div id="Filename_bfk">
-								<span>Filename</span>
-							</div>
-							<div id="assignmentpdf_bfl">
-								<span>assignment.pdf</span>
-							</div>
+						<div id="Portrait_bdb">
+							<span>Portrait</span>
 						</div>
 					</div>
-				</div>
-				<div id="Price_Cost_bfm">
-					<svg class="Rectangle_99">
-						<rect id="Rectangle_99" rx="0" ry="0" x="0" y="0" width="590" height="186">
-						</rect>
-					</svg>
-					<div id="Print_Cost_____________________bfo">
-						<span>Print Cost                                                 ₱280</span>
+					<div id="Paper_Size_bdc">
+						<svg class="Line_98" viewBox="0 0 348.411 1">
+							<path id="Line_98" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Paper_Type_bde">
+							<span>Paper Type</span>
+						</div>
+						<div id="Plain_Paper_bdf">
+							<span>Plain Paper</span>
+						</div>
 					</div>
-					<div id="Total__________________________bfp">
-						<span>Total                                                      </span><span style="color:rgba(243,34,138,1);">₱325  </span>
+					<div id="Paper_Size_bdg">
+						<svg class="Line_99" viewBox="0 0 348.411 1">
+							<path id="Line_99" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Copies_bdi">
+							<span>Copies</span>
+						</div>
+						<div id="ID10_bdj">
+							<span>10</span>
+						</div>
 					</div>
-					<div id="Shipping_Cost__________________bfq">
-						<span>Shipping Cost                                           ₱45</span>
+					<div id="Paper_Size_bdk">
+						<svg class="Line_100" viewBox="0 0 348.411 1">
+							<path id="Line_100" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Grayscale_Printing_bdm">
+							<span>Grayscale Printing</span>
+						</div>
+						<div id="No_bdn">
+							<span>No</span>
+						</div>
 					</div>
-					<div id="Payment_Details_bfr">
-						<span>Payment Details</span>
+					<div id="Paper_Size_bdo">
+						<div id="Filename_bdp">
+							<span>Filename</span>
+						</div>
+						<div id="assignmentpdf_bdq">
+							<span>assignment.pdf</span>
+						</div>
 					</div>
-					<img id="ID8665241_clipboard_list_icon_bfs" src="{{ url_for('static', filename='images/ID8665241_clipboard_list_icon_bfs.png') }}" srcset="{{url_for('static', filename='images/ID8665241_clipboard_list_icon_bfs.png') }} 1x, {{url_for('static', filename='images/ID8665241_clipboard_list_icon_bfs@2x.png')}} 2x">
-						
-				</div>
-				<div id="Delivery_Address_bft">
-					<svg class="Rectangle_100">
-						<rect id="Rectangle_100" rx="0" ry="0" x="0" y="0" width="591" height="119">
-						</rect>
-					</svg>
-					<div id="Delivery_Address_bfv">
-						<span>Delivery Address:</span>
-					</div>
-					<svg class="Rectangle_101">
-						<rect id="Rectangle_101" rx="0" ry="0" x="0" y="0" width="142" height="119">
-						</rect>
-					</svg>
-					<div id="John_Doe__63_912_345_6789_1234_bfx">
-						<span>John Doe | (+63) 912 345 6789<br/>1234 Quezon Avenue, Quezon City, Metro Manila, 1008 </span>
-					</div>
-					<svg class="Ellipse_18">
-						<ellipse id="Ellipse_18" rx="37.5" ry="38" cx="37.5" cy="38">
-						</ellipse>
-					</svg>
-					<img id="ID2849827_pointer_map_location_bfz" src="{{ url_for('static', filename='images/ID2849827_pointer_map_location_bfz.png') }}" srcset="{{url_for('static', filename='images/ID2849827_pointer_map_location_bfz.png') }} 1x, {{url_for('static', filename='images/ID2849827_pointer_map_location_bfz@2x.png')}} 2x">
-						
-				</div>
-				<div id="Component_19__2" class="Component_19___2">
-					<svg class="Rectangle_81_bf">
-						<rect id="Rectangle_81_bf" rx="5" ry="5" x="0" y="0" width="45" height="45">
-						</rect>
-					</svg>
 				</div>
 			</div>
-			<div id="Contents_bf" class="Contents">
-				<svg class="Rectangle_102">
-					<rect id="Rectangle_102" rx="0" ry="0" x="0" y="0" width="1292" height="677">
+			<div id="Price_Cost_bdr">
+				<svg class="Rectangle_90">
+					<rect id="Rectangle_90" rx="0" ry="0" x="0" y="0" width="590" height="186">
 					</rect>
 				</svg>
-				<svg class="Line_109" viewBox="0 0 1252 1">
-					<path id="Line_109" d="M 0 0 L 1252 0">
-					</path>
+				<div id="Print_Cost_____________________bdt">
+					<span>Print Cost                                                 ₱280</span>
+				</div>
+				<div id="Total__________________________bdu">
+					<span>Total                                                      </span><span style="color:rgba(243,34,138,1);">₱325  </span>
+				</div>
+				<div id="Shipping_Cost__________________bdv">
+					<span>Shipping Cost                                           ₱45</span>
+				</div>
+				<div id="Payment_Details_bdw">
+					<span>Payment Details</span>
+				</div>
+				<img id="ID8665241_clipboard_list_icon_bdx" src="{{ url_for('static', filename='images/ID8665241_clipboard_list_icon_bdx.png') }}" srcset="{{url_for('static', filename='images/ID8665241_clipboard_list_icon_bdx.png') }} 1x, {{url_for('static', filename='images/ID8665241_clipboard_list_icon_bdx@2x.png')}} 2x">
+					
+			</div>
+			<div id="Delivery_Address_bdy">
+				<svg class="Rectangle_91">
+					<rect id="Rectangle_91" rx="0" ry="0" x="0" y="0" width="591" height="119">
+					</rect>
 				</svg>
-				<div id="Buttons_bf">
-					<div id="View_Shop_Button_bf">
-						<svg class="Rectangle_103">
-							<rect id="Rectangle_103" rx="0" ry="0" x="0" y="0" width="146" height="37">
-							</rect>
-						</svg>
-						<div id="View_Shop_bf">
-							<span>View Shop</span>
-						</div>
-						<img id="ID352513_local_print_shop_icon_bf" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bf.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bf.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bf@2x.png')}} 2x">
-							
-					</div>
-					<div id="Rate_Button_bga">
-						<svg class="Rectangle_104_bgc">
-							<linearGradient id="Rectangle_104_bgc" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-								<stop offset="0" stop-color="#6a6a6a" stop-opacity="1"></stop>
-								<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
-							</linearGradient>
-							<rect id="Rectangle_104_bgc" rx="10" ry="10" x="0" y="0" width="206" height="69">
-							</rect>
-						</svg>
-						<div id="Delete_bgd">
-							<span>Delete</span>
-						</div>
-					</div>
+				<div id="Delivery_Address_bd">
+					<span>Delivery Address:</span>
 				</div>
-				<div id="Shop_Name_bge">
-					<svg class="Rectangle_105">
-						<rect id="Rectangle_105" rx="0" ry="0" x="0" y="0" width="276" height="37">
-						</rect>
-					</svg>
-					<img id="ID352513_local_print_shop_icon_bgg" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bgg.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bgg.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bgg@2x.png')}} 2x">
-						
+				<svg class="Rectangle_92">
+					<rect id="Rectangle_92" rx="0" ry="0" x="0" y="0" width="142" height="119">
+					</rect>
+				</svg>
+				<div id="John_Doe__63_912_345_6789_1234_bd">
+					<span>John Doe | (+63) 912 345 6789<br/>1234 Quezon Avenue, Quezon City, Metro Manila, 1008 </span>
 				</div>
-				<div id="Print_Order_Configuration_bgh">
-					<div id="Base_bgi">
-						<svg class="Rectangle_106">
-							<rect id="Rectangle_106" rx="30" ry="30" x="0" y="0" width="389" height="502">
-							</rect>
-						</svg>
-						<svg class="Rectangle_107">
-							<rect id="Rectangle_107" rx="0" ry="0" x="0" y="0" width="158" height="30">
-							</rect>
-						</svg>
-						<div id="Order_Details_bgl">
-							<span>Order Details</span>
-						</div>
-						<div id="Paper_Size_bgm">
-							<svg class="Line_110" viewBox="0 0 348.411 1">
-								<path id="Line_110" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Paper_Size_bgo">
-								<span>Paper Size</span>
-							</div>
-							<div id="Letter_85_x_11_bgp">
-								<span>Letter 8.5" x 11"</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bgq">
-							<svg class="Line_111" viewBox="0 0 348.411 1">
-								<path id="Line_111" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Print_Pages_bgs">
-								<span>Print Pages</span>
-							</div>
-							<div id="All_Pages__bgt">
-								<span>All Pages </span>
-							</div>
-						</div>
-						<div id="Paper_Size_bgu">
-							<svg class="Line_112" viewBox="0 0 348.411 1">
-								<path id="Line_112" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Print_Sides_bgw">
-								<span>Print Sides</span>
-							</div>
-							<div id="Print_One_Sided_bgx">
-								<span>Print One Sided</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bgy">
-							<svg class="Line_113" viewBox="0 0 348.411 1">
-								<path id="Line_113" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Orientation_bg">
-								<span>Orientation</span>
-							</div>
-							<div id="Portrait_bg">
-								<span>Portrait</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bg">
-							<svg class="Line_114" viewBox="0 0 348.411 1">
-								<path id="Line_114" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Paper_Type_bg">
-								<span>Paper Type</span>
-							</div>
-							<div id="Plain_Paper_bg">
-								<span>Plain Paper</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bha">
-							<svg class="Line_115" viewBox="0 0 348.411 1">
-								<path id="Line_115" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Copies_bg">
-								<span>Copies</span>
-							</div>
-							<div id="ID10_bg">
-								<span>10</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bhb">
-							<svg class="Line_116" viewBox="0 0 348.411 1">
-								<path id="Line_116" d="M 0 0 L 348.410888671875 0">
-								</path>
-							</svg>
-							<div id="Grayscale_Printing_bhc">
-								<span>Grayscale Printing</span>
-							</div>
-							<div id="No_bhd">
-								<span>No</span>
-							</div>
-						</div>
-						<div id="Paper_Size_bhe">
-							<div id="Filename_bhf">
-								<span>Filename</span>
-							</div>
-							<div id="assignmentpdf_bhg">
-								<span>assignment.pdf</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="Price_Cost_bhh">
-					<svg class="Rectangle_108">
-						<rect id="Rectangle_108" rx="0" ry="0" x="0" y="0" width="590" height="186">
-						</rect>
-					</svg>
-					<div id="Print_Cost_____________________bhj">
-						<span>Print Cost                                                 ₱280</span>
-					</div>
-					<div id="Total__________________________bhk">
-						<span>Total                                                      </span><span style="color:rgba(243,34,138,1);">₱325  </span>
-					</div>
-					<div id="Shipping_Cost__________________bhl">
-						<span>Shipping Cost                                           ₱45</span>
-					</div>
-					<div id="Payment_Details_bhm">
-						<span>Payment Details</span>
-					</div>
-					<img id="ID8665241_clipboard_list_icon_bhn" src="{{ url_for('static', filename='images/ID8665241_clipboard_list_icon_bhn.png') }}" srcset="{{url_for('static', filename='images/ID8665241_clipboard_list_icon_bhn.png') }} 1x, {{url_for('static', filename='images/ID8665241_clipboard_list_icon_bhn@2x.png')}} 2x">
-						
-				</div>
-				<div id="Delivery_Address_bho">
-					<svg class="Rectangle_109">
-						<rect id="Rectangle_109" rx="0" ry="0" x="0" y="0" width="591" height="119">
-						</rect>
-					</svg>
-					<div id="Delivery_Address_bhq">
-						<span>Delivery Address:</span>
-					</div>
-					<svg class="Rectangle_110">
-						<rect id="Rectangle_110" rx="0" ry="0" x="0" y="0" width="142" height="119">
-						</rect>
-					</svg>
-					<div id="John_Doe__63_912_345_6789_1234_bhs">
-						<span>John Doe | (+63) 912 345 6789<br/>1234 Quezon Avenue, Quezon City, Metro Manila, 1008 </span>
-					</div>
-					<svg class="Ellipse_19">
-						<ellipse id="Ellipse_19" rx="37.5" ry="38" cx="37.5" cy="38">
-						</ellipse>
-					</svg>
-					<img id="ID2849827_pointer_map_location_bhu" src="{{ url_for('static', filename='images/ID2849827_pointer_map_location_bhu.png') }}" srcset="{{url_for('static', filename='images/ID2849827_pointer_map_location_bhu.png') }} 1x, {{url_for('static', filename='images/ID2849827_pointer_map_location_bhu@2x.png')}} 2x">
-						
-				</div>
-				<div id="Component_19__3" class="Component_19___3">
-					<svg class="Rectangle_81_bhw">
-						<rect id="Rectangle_81_bhw" rx="5" ry="5" x="0" y="0" width="45" height="45">
-						</rect>
-					</svg>
-				</div>
+				<svg class="Ellipse_17">
+					<ellipse id="Ellipse_17" rx="37.5" ry="38" cx="37.5" cy="38">
+					</ellipse>
+				</svg>
+				<img id="ID2849827_pointer_map_location_bd" src="{{ url_for('static', filename='images/ID2849827_pointer_map_location_bd.png') }}" srcset="{{url_for('static', filename='images/ID2849827_pointer_map_location_bd.png') }} 1x, {{url_for('static', filename='images/ID2849827_pointer_map_location_bd@2x.png')}} 2x">
+					
+			</div>
+			<div id="Component_19__1" class="Component_19___1">
+				<svg class="Rectangle_81">
+					<rect id="Rectangle_81" rx="5" ry="5" x="0" y="0" width="45" height="45">
+					</rect>
+				</svg>
 			</div>
 		</div>
+		<!--<div id="Contents_bd" class="Contents">
+			<svg class="Rectangle_93">
+				<rect id="Rectangle_93" rx="0" ry="0" x="0" y="0" width="1292" height="677">
+				</rect>
+			</svg>
+			<svg class="Line_101" viewBox="0 0 1252 1">
+				<path id="Line_101" d="M 0 0 L 1252 0">
+				</path>
+			</svg>
+			<div id="Buttons_bea">
+				<div id="View_Shop_Button_beb">
+					<svg class="Rectangle_94">
+						<rect id="Rectangle_94" rx="0" ry="0" x="0" y="0" width="146" height="37">
+						</rect>
+					</svg>
+					<div id="View_Shop_bed">
+						<span>View Shop</span>
+					</div>
+					<img id="ID352513_local_print_shop_icon_bee" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bee.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bee.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bee@2x.png')}} 2x">
+						
+				</div>
+				<div id="Rate_Button_bef">
+					<svg class="Rectangle_95_beh">
+						<linearGradient id="Rectangle_95_beh" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+							<stop offset="0" stop-color="#6a6a6a" stop-opacity="1"></stop>
+							<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
+						</linearGradient>
+						<rect id="Rectangle_95_beh" rx="10" ry="10" x="0" y="0" width="206" height="69">
+						</rect>
+					</svg>
+					<div id="Delete_bei">
+						<span>Delete</span>
+					</div>
+				</div>
+			</div>
+			<div id="Shop_Name_bej">
+				<svg class="Rectangle_96">
+					<rect id="Rectangle_96" rx="0" ry="0" x="0" y="0" width="276" height="37">
+					</rect>
+				</svg>
+				<img id="ID352513_local_print_shop_icon_bel" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bel.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bel.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bel@2x.png')}} 2x">
+					
+			</div>
+			<div id="Print_Order_Configuration_bem">
+				<div id="Base_ben">
+					<svg class="Rectangle_97">
+						<rect id="Rectangle_97" rx="30" ry="30" x="0" y="0" width="389" height="502">
+						</rect>
+					</svg>
+					<svg class="Rectangle_98">
+						<rect id="Rectangle_98" rx="0" ry="0" x="0" y="0" width="158" height="30">
+						</rect>
+					</svg>
+					<div id="Order_Details_beq">
+						<span>Order Details</span>
+					</div>
+					<div id="Paper_Size_ber">
+						<svg class="Line_102" viewBox="0 0 348.411 1">
+							<path id="Line_102" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Paper_Size_bet">
+							<span>Paper Size</span>
+						</div>
+						<div id="Letter_85_x_11_beu">
+							<span>Letter 8.5" x 11"</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bev">
+						<svg class="Line_103" viewBox="0 0 348.411 1">
+							<path id="Line_103" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Print_Pages_bex">
+							<span>Print Pages</span>
+						</div>
+						<div id="All_Pages__bey">
+							<span>All Pages </span>
+						</div>
+					</div>
+					<div id="Paper_Size_bez">
+						<svg class="Line_104" viewBox="0 0 348.411 1">
+							<path id="Line_104" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Print_Sides_be">
+							<span>Print Sides</span>
+						</div>
+						<div id="Print_One_Sided_be">
+							<span>Print One Sided</span>
+						</div>
+					</div>
+					<div id="Paper_Size_be">
+						<svg class="Line_105" viewBox="0 0 348.411 1">
+							<path id="Line_105" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Orientation_be">
+							<span>Orientation</span>
+						</div>
+						<div id="Portrait_be">
+							<span>Portrait</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bfa">
+						<svg class="Line_106" viewBox="0 0 348.411 1">
+							<path id="Line_106" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Paper_Type_be">
+							<span>Paper Type</span>
+						</div>
+						<div id="Plain_Paper_bfa">
+							<span>Plain Paper</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bfb">
+						<svg class="Line_107" viewBox="0 0 348.411 1">
+							<path id="Line_107" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Copies_bfd">
+							<span>Copies</span>
+						</div>
+						<div id="ID10_bfe">
+							<span>10</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bff">
+						<svg class="Line_108" viewBox="0 0 348.411 1">
+							<path id="Line_108" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Grayscale_Printing_bfh">
+							<span>Grayscale Printing</span>
+						</div>
+						<div id="No_bfi">
+							<span>No</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bfj">
+						<div id="Filename_bfk">
+							<span>Filename</span>
+						</div>
+						<div id="assignmentpdf_bfl">
+							<span>assignment.pdf</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="Price_Cost_bfm">
+				<svg class="Rectangle_99">
+					<rect id="Rectangle_99" rx="0" ry="0" x="0" y="0" width="590" height="186">
+					</rect>
+				</svg>
+				<div id="Print_Cost_____________________bfo">
+					<span>Print Cost                                                 ₱280</span>
+				</div>
+				<div id="Total__________________________bfp">
+					<span>Total                                                      </span><span style="color:rgba(243,34,138,1);">₱325  </span>
+				</div>
+				<div id="Shipping_Cost__________________bfq">
+					<span>Shipping Cost                                           ₱45</span>
+				</div>
+				<div id="Payment_Details_bfr">
+					<span>Payment Details</span>
+				</div>
+				<img id="ID8665241_clipboard_list_icon_bfs" src="{{ url_for('static', filename='images/ID8665241_clipboard_list_icon_bfs.png') }}" srcset="{{url_for('static', filename='images/ID8665241_clipboard_list_icon_bfs.png') }} 1x, {{url_for('static', filename='images/ID8665241_clipboard_list_icon_bfs@2x.png')}} 2x">
+					
+			</div>
+			<div id="Delivery_Address_bft">
+				<svg class="Rectangle_100">
+					<rect id="Rectangle_100" rx="0" ry="0" x="0" y="0" width="591" height="119">
+					</rect>
+				</svg>
+				<div id="Delivery_Address_bfv">
+					<span>Delivery Address:</span>
+				</div>
+				<svg class="Rectangle_101">
+					<rect id="Rectangle_101" rx="0" ry="0" x="0" y="0" width="142" height="119">
+					</rect>
+				</svg>
+				<div id="John_Doe__63_912_345_6789_1234_bfx">
+					<span>John Doe | (+63) 912 345 6789<br/>1234 Quezon Avenue, Quezon City, Metro Manila, 1008 </span>
+				</div>
+				<svg class="Ellipse_18">
+					<ellipse id="Ellipse_18" rx="37.5" ry="38" cx="37.5" cy="38">
+					</ellipse>
+				</svg>
+				<img id="ID2849827_pointer_map_location_bfz" src="{{ url_for('static', filename='images/ID2849827_pointer_map_location_bfz.png') }}" srcset="{{url_for('static', filename='images/ID2849827_pointer_map_location_bfz.png') }} 1x, {{url_for('static', filename='images/ID2849827_pointer_map_location_bfz@2x.png')}} 2x">
+					
+			</div>
+			<div id="Component_19__2" class="Component_19___2">
+				<svg class="Rectangle_81_bf">
+					<rect id="Rectangle_81_bf" rx="5" ry="5" x="0" y="0" width="45" height="45">
+					</rect>
+				</svg>
+			</div>
+		</div>
+		<div id="Contents_bf" class="Contents">
+			<svg class="Rectangle_102">
+				<rect id="Rectangle_102" rx="0" ry="0" x="0" y="0" width="1292" height="677">
+				</rect>
+			</svg>
+			<svg class="Line_109" viewBox="0 0 1252 1">
+				<path id="Line_109" d="M 0 0 L 1252 0">
+				</path>
+			</svg>
+			<div id="Buttons_bf">
+				<div id="View_Shop_Button_bf">
+					<svg class="Rectangle_103">
+						<rect id="Rectangle_103" rx="0" ry="0" x="0" y="0" width="146" height="37">
+						</rect>
+					</svg>
+					<div id="View_Shop_bf">
+						<span>View Shop</span>
+					</div>
+					<img id="ID352513_local_print_shop_icon_bf" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bf.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bf.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bf@2x.png')}} 2x">
+						
+				</div>
+				<div id="Rate_Button_bga">
+					<svg class="Rectangle_104_bgc">
+						<linearGradient id="Rectangle_104_bgc" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+							<stop offset="0" stop-color="#6a6a6a" stop-opacity="1"></stop>
+							<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
+						</linearGradient>
+						<rect id="Rectangle_104_bgc" rx="10" ry="10" x="0" y="0" width="206" height="69">
+						</rect>
+					</svg>
+					<div id="Delete_bgd">
+						<span>Delete</span>
+					</div>
+				</div>
+			</div>
+			<div id="Shop_Name_bge">
+				<svg class="Rectangle_105">
+					<rect id="Rectangle_105" rx="0" ry="0" x="0" y="0" width="276" height="37">
+					</rect>
+				</svg>
+				<img id="ID352513_local_print_shop_icon_bgg" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_bgg.png') }}" srcset="{{url_for('static', filename='images/ID352513_local_print_shop_icon_bgg.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_bgg@2x.png')}} 2x">
+					
+			</div>
+			<div id="Print_Order_Configuration_bgh">
+				<div id="Base_bgi">
+					<svg class="Rectangle_106">
+						<rect id="Rectangle_106" rx="30" ry="30" x="0" y="0" width="389" height="502">
+						</rect>
+					</svg>
+					<svg class="Rectangle_107">
+						<rect id="Rectangle_107" rx="0" ry="0" x="0" y="0" width="158" height="30">
+						</rect>
+					</svg>
+					<div id="Order_Details_bgl">
+						<span>Order Details</span>
+					</div>
+					<div id="Paper_Size_bgm">
+						<svg class="Line_110" viewBox="0 0 348.411 1">
+							<path id="Line_110" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Paper_Size_bgo">
+							<span>Paper Size</span>
+						</div>
+						<div id="Letter_85_x_11_bgp">
+							<span>Letter 8.5" x 11"</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bgq">
+						<svg class="Line_111" viewBox="0 0 348.411 1">
+							<path id="Line_111" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Print_Pages_bgs">
+							<span>Print Pages</span>
+						</div>
+						<div id="All_Pages__bgt">
+							<span>All Pages </span>
+						</div>
+					</div>
+					<div id="Paper_Size_bgu">
+						<svg class="Line_112" viewBox="0 0 348.411 1">
+							<path id="Line_112" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Print_Sides_bgw">
+							<span>Print Sides</span>
+						</div>
+						<div id="Print_One_Sided_bgx">
+							<span>Print One Sided</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bgy">
+						<svg class="Line_113" viewBox="0 0 348.411 1">
+							<path id="Line_113" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Orientation_bg">
+							<span>Orientation</span>
+						</div>
+						<div id="Portrait_bg">
+							<span>Portrait</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bg">
+						<svg class="Line_114" viewBox="0 0 348.411 1">
+							<path id="Line_114" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Paper_Type_bg">
+							<span>Paper Type</span>
+						</div>
+						<div id="Plain_Paper_bg">
+							<span>Plain Paper</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bha">
+						<svg class="Line_115" viewBox="0 0 348.411 1">
+							<path id="Line_115" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Copies_bg">
+							<span>Copies</span>
+						</div>
+						<div id="ID10_bg">
+							<span>10</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bhb">
+						<svg class="Line_116" viewBox="0 0 348.411 1">
+							<path id="Line_116" d="M 0 0 L 348.410888671875 0">
+							</path>
+						</svg>
+						<div id="Grayscale_Printing_bhc">
+							<span>Grayscale Printing</span>
+						</div>
+						<div id="No_bhd">
+							<span>No</span>
+						</div>
+					</div>
+					<div id="Paper_Size_bhe">
+						<div id="Filename_bhf">
+							<span>Filename</span>
+						</div>
+						<div id="assignmentpdf_bhg">
+							<span>assignment.pdf</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="Price_Cost_bhh">
+				<svg class="Rectangle_108">
+					<rect id="Rectangle_108" rx="0" ry="0" x="0" y="0" width="590" height="186">
+					</rect>
+				</svg>
+				<div id="Print_Cost_____________________bhj">
+					<span>Print Cost                                                 ₱280</span>
+				</div>
+				<div id="Total__________________________bhk">
+					<span>Total                                                      </span><span style="color:rgba(243,34,138,1);">₱325  </span>
+				</div>
+				<div id="Shipping_Cost__________________bhl">
+					<span>Shipping Cost                                           ₱45</span>
+				</div>
+				<div id="Payment_Details_bhm">
+					<span>Payment Details</span>
+				</div>
+				<img id="ID8665241_clipboard_list_icon_bhn" src="{{ url_for('static', filename='images/ID8665241_clipboard_list_icon_bhn.png') }}" srcset="{{url_for('static', filename='images/ID8665241_clipboard_list_icon_bhn.png') }} 1x, {{url_for('static', filename='images/ID8665241_clipboard_list_icon_bhn@2x.png')}} 2x">
+					
+			</div>
+			<div id="Delivery_Address_bho">
+				<svg class="Rectangle_109">
+					<rect id="Rectangle_109" rx="0" ry="0" x="0" y="0" width="591" height="119">
+					</rect>
+				</svg>
+				<div id="Delivery_Address_bhq">
+					<span>Delivery Address:</span>
+				</div>
+				<svg class="Rectangle_110">
+					<rect id="Rectangle_110" rx="0" ry="0" x="0" y="0" width="142" height="119">
+					</rect>
+				</svg>
+				<div id="John_Doe__63_912_345_6789_1234_bhs">
+					<span>John Doe | (+63) 912 345 6789<br/>1234 Quezon Avenue, Quezon City, Metro Manila, 1008 </span>
+				</div>
+				<svg class="Ellipse_19">
+					<ellipse id="Ellipse_19" rx="37.5" ry="38" cx="37.5" cy="38">
+					</ellipse>
+				</svg>
+				<img id="ID2849827_pointer_map_location_bhu" src="{{ url_for('static', filename='images/ID2849827_pointer_map_location_bhu.png') }}" srcset="{{url_for('static', filename='images/ID2849827_pointer_map_location_bhu.png') }} 1x, {{url_for('static', filename='images/ID2849827_pointer_map_location_bhu@2x.png')}} 2x">
+					
+			</div>
+			<div id="Component_19__3" class="Component_19___3">
+				<svg class="Rectangle_81_bhw">
+					<rect id="Rectangle_81_bhw" rx="5" ry="5" x="0" y="0" width="45" height="45">
+					</rect>
+				</svg>
+			</div>
+		</div>-->
 	</div>
 	<div id="Header_bhx">
 		<svg class="Line_78_bhy" viewBox="0 0 1236 1">

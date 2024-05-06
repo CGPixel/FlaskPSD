@@ -19,8 +19,22 @@ def get_db_connection():
                            passwd='',
                            db='testprintdb')
 
+def get_db():
+    try:
+        return mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    except MySQLdb.OperationalError:
+        # Attempt to reconnect
+        mysql.connection = mysql.connect()
+        return mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
 @app.route("/shop/")
 def redirect_shop_register():
+    return redirect(url_for("shop_register"))
+
+@app.route("/shop/logout")
+def shop_logout():
+    session.pop('user_ID', None)
+    session.clear()
     return redirect(url_for("shop_register"))
     
 @app.route("/shop/register", methods=['GET', 'POST'])
@@ -58,14 +72,12 @@ def shop_sign_in():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        # Adjusted SQL query to include a condition for user_level being 'Printing Shop' or 'Customer'
+        cursor = get_db()
         cursor.execute('SELECT * FROM user WHERE username = %s AND password = %s AND user_level IN ("Printing Shop", "Customer")', (username, password, ))
         user = cursor.fetchone()
         if user:
             session['loggedin'] = True
             session['user_ID'] = user['user_ID']
-            session['first_name'] = user['first_name']
             session['username'] = user['username']
             session['email'] = user['email']
             session['user_level'] = user['user_level'] # Store user_level in session
@@ -76,7 +88,7 @@ def shop_sign_in():
                 message = 'Logged in successfully as a Customer!'
                 return redirect(url_for("Dashboard")) # Redirect to Customer Dashboard
         else:
-            message = 'Please enter correct Username / Password or you are not authorized to access this level!'
+            return redirect(url_for('shop_sign_in', incorrect=True))
     return render_template("level2/Login_Register.html", message=message)
 
 
@@ -168,7 +180,7 @@ def shop_register_profile():
         cursor.execute("SELECT * FROM printingshops WHERE user_ID = %s", (user_id,))
         new_shop_data = cursor.fetchone()
         
-         # Retrieve shop_ID from printingshops table based on user_ID
+        # Retrieve shop_ID from printingshops table based on user_ID
         cursor.execute("SELECT shop_ID FROM printingshops WHERE user_ID = %s", (user_id,))
         shop_data = cursor.fetchone()
         
@@ -179,7 +191,7 @@ def shop_register_profile():
             session["Detail_Address"] = new_shop_data[4]
             session["Postal_Code"] = new_shop_data[5]
             session["Number"] = new_shop_data[6]
-            session['Description'] = new_shop_data[7].replace('&#34;', '"')
+            session['Description'] = new_shop_data[7].replace('&#34;', '')
             
         if shop_data:
             shop_ID = shop_data[0]
@@ -198,10 +210,13 @@ def shop_register_profile():
                 session["category_name"] = "Default Category"
                 cursor.execute("INSERT INTO category (shop_ID, category_name) VALUES (%s, %s)", (shop_ID, session["category_name"]))
                 connection.commit()
-        category_names = [tag.strip() for tag in category_data[0].split(',')]  # Remove leading and trailing spaces from each category
-        category_names.sort(key=lambda x: x.split()[0].lower())  # Sort categories based on the first word of each category
-        sorted_category_names = ', '.join(category_names)
-        session["category_name"] = sorted_category_names
+        
+        # Check if category_data is not None and contains at least one element
+        if category_data and category_data[0]:
+            category_names = [tag.strip() for tag in category_data[0].split(',')]  # Remove leading and trailing spaces from each category
+            category_names.sort(key=lambda x: x.split()[0].lower())  # Sort categories based on the first word of each category
+            sorted_category_names = ', '.join(category_names)
+            session["category_name"] = sorted_category_names
     return render_template("level2/Print_Servicing___Register__3.html")
 
 @app.route('/save_form_data_shop', methods=['POST'])

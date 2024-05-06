@@ -75,7 +75,6 @@ def admin_sign_in():
         if user:
             session['loggedin'] = True
             session['user_ID'] = user['user_ID']
-            session['first_name'] = user['first_name']
             session['username'] = user['username']
             session['email'] = user['email']
             session['user_level'] = user['user_level'] # Store user_level in session

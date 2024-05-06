@@ -345,10 +345,39 @@
 		top: 0px;
 		overflow: visible;
 	}
+	.avatar {
+		position: absolute;
+		left: 0px;
+		vertical-align: middle;
+		width: 137px;
+		height: 137px;
+		border-radius: 50%;
+	}
+	#imagePreview {
+		left: 830px;
+		top: 975px;
+		width: 274px; /* Adjust the width as needed */
+		height: 274px; /* Adjust the height as needed */
+		overflow: hidden; /* Ensure the image does not exceed the container's bounds */
+		position: relative; /* Needed for absolute positioning of the image */
+		border-radius: 50%;
+		border: 3px solid #000;
+		background-color: transparent;
+	}
+	.avatar_preview {
+		position: absolute;
+		left: 830px;
+		top: 975px;
+		vertical-align: middle;
+		width: 274px;
+		height: 274px;
+		border-radius: 50%;
+	  }
 	#Ellipse_8_ {
 		fill: rgba(229,217,217,1);
 	}
 	.Ellipse_8_ {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 137px;
@@ -1034,12 +1063,55 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Ellipse_15 {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 272px;
 		height: 272px;
 		left: 0px;
 		top: 0px;
+	}
+	#upload_pic {
+		cursor: pointer;
+		border-radius: 20px;
+		background-color: #000;
+		position:absolute;
+		top: 1143px;
+		left: 1400px;
+		width: 100px;
+		height: 68px;
+		color: #fff;
+		font-size: 50px;
+		padding-bottom: 10px;
+		z-index: 1;
+	}
+	#Picture {
+		position: absolute;
+		background-color: transparent;
+		z-index: 1;
+	}
+	.file-upload {
+		cursor: pointer;
+		position: absolute;
+		top: 1143px;
+		left: 1163px;
+		width: 222px;
+		height: 70px;
+		background-color: transparent;
+		z-index: 1;
+		display: inline-block;
+		padding: 20px 20px;
+		cursor: pointer;
+		text-align: center;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 28px;
+		color: rgba(71,71,71,1);
+	}
+	
+	.file-upload input[type="file"] {
+		display: none;
 	}
 	#Select_Image {
 		position: absolute;
@@ -1068,6 +1140,7 @@
 		top: 0px;
 	}
 	#Select_Image_p {
+		display: none;
 		left: 38px;
 		top: 22px;
 		position: absolute;
@@ -1138,8 +1211,8 @@
 		position: absolute;
 		width: 187px;
 		height: 60px;
-		left: 1061.5px;
-		top: 842px;
+		left: 500.5px;
+		top: 360px;
 		overflow: visible;
 	}
 
@@ -1157,7 +1230,8 @@
 	}
 	#Save_x {
 		cursor: pointer;
-		left: 0;
+		top: 50px;
+		left: 550px;
 		right: 0;
 		position: relative;
 		overflow: visible;
@@ -1447,7 +1521,7 @@
 		overflow: visible;
 		--web-animation: fadein undefineds undefined;
 		--web-action-type: page;
-		--web-action-target: Manage_Shop___Shop_Info.html;
+		--web-action-target: my_Account;
 		cursor: pointer;
 	}
 	#Manage_Shop_m {
@@ -4416,6 +4490,7 @@ window.application = new Application();
 	</svg>
 	<div id="Left_Column_y">
 		<div id="Profile_Display_z">
+			<img src="{{ url_for('static', filename='User_Profiles/default.png') }}" alt="Avatar" class="avatar">
 			<svg class="Ellipse_8_">
 				<ellipse id="Ellipse_8_" rx="68.5" ry="68.5" cx="68.5" cy="68.5">
 				</ellipse>
@@ -4629,11 +4704,21 @@ window.application = new Application();
 				</rect>
 			</svg>
 			</div>
-		<svg class="Line_80" viewBox="0 0 1236 1">
-			<path id="Line_80" d="M 0 0 L 1236 0">
-			</path>
-		</svg>
+			<svg class="Line_80" viewBox="0 0 1236 1">
+				<path id="Line_80" d="M 0 0 L 1236 0">
+				</path>
+			</svg>
+		</div>
 	</form>
+	<img src="{{ url_for('static', filename='User_Profiles/default.png') }}" alt="Default" class="avatar_preview">
+	<div id="imagePreview"></div>
+	<form id="imageUploadForm" method="POST" enctype="multipart/form-data">
+		<label for="Picture" class="file-upload">
+			<input id="Picture" type="file" name="image" accept="image/*" style="display: none;">
+			<span>Select Image</span>
+		</label>
+		<button type="button" id="upload_pic">↑</button>
+	  </form>
 	<div id="Chat_Button_z" class="Chat_Button">
 		<svg class="Rectangle_58_c">
 			<linearGradient id="Rectangle_58_c" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
@@ -4711,7 +4796,65 @@ window.application = new Application();
 		</div>
 	</div>
 </div>
-<script>		
+<script>
+	document.getElementById('Picture').addEventListener('change', function() {
+		var file = this.files[0];
+		var img = document.createElement('img');
+		var defaultImageUrl = "{{ url_for('static', filename='User_Profiles/default.png') }}"; // URL of the default image
+		var container = document.getElementById('imagePreview');
+	
+		// Check if a file is selected
+		if (file) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				img.src = e.target.result;
+				img.style.maxWidth = '100%'; // Ensure the image does not exceed the container's width
+				img.style.maxHeight = '100%'; // Ensure the image does not exceed the container's height
+				img.style.objectFit = 'cover'; // Cover the container without distorting the aspect ratio
+				img.style.position = 'absolute'; // Position the image absolutely within the container
+				img.style.top = '50%'; // Center the image vertically
+				img.style.left = '50%'; // Center the image horizontally
+				img.style.transform = 'translate(-50%, -50%)'; // Adjust the position to center the image
+				container.style.backgroundColor = '#fff'; // Set background color to white
+				container.innerHTML = ''; // Clear previous content
+				container.appendChild(img); // Append the image to the container
+			}
+			reader.readAsDataURL(file);
+		} else {
+			// If no file is selected, use the default image and set background color to transparent
+			img.src = defaultImageUrl;
+			container.style.backgroundColor = 'transparent';
+			container.innerHTML = ''; // Clear previous content
+			container.appendChild(img); // Append the image to the container
+		}
+	});
+	$(document).ready(function () {
+		$('#upload_pic').click(function () {
+			var file = $('#Picture')[0].files[0];
+			// Check if a file is selected
+			if (file) {
+				var formData = new FormData();
+				formData.append('image', file);
+	
+				$.ajax({
+					url: '/shop/profile_picture',
+					type: 'POST',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (response) {
+						console.log('File uploaded successfully');
+					},
+					error: function (xhr, status, error) {
+						console.error('Error uploading file:', error);
+					}
+				});
+			} else {
+				console.log('No picture selected.');
+				return false;
+			}
+		});
+	});	
 </script>
 </body>
 </html>

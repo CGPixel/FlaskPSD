@@ -152,35 +152,36 @@ def Register():
         email = request.form['email']
         password = request.form['password']
         user_level = 3 #admin = 1 ;user= 2 ; customer = 3
-
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM user WHERE LOWER(username) = %s', (username.lower(),))
-        account = cursor.fetchone()
-        print(account)
-        if account:
-            return account[3]
-        
-        if len(password) < 6:
-            message = "Password must be at least 6 characters long!"
-        else:
-            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-            cursor.execute('SELECT * FROM user WHERE username = %s', (email,))
+        connection = get_db_connection()
+        cursor = connection.cursor()
+        try:
+            cursor.execute('SELECT * FROM user WHERE LOWER(username) = %s', (username.lower(),))
             account = cursor.fetchone()
             if account:
-                message = "Account Already Exists!"
-            elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-                message = "Invalid Email Address!"
-            elif not username or not password or not email:
-                message = "Please complete the Entry!"
+                message = "Username already exists!"
             else:
-                cursor.execute('INSERT INTO user (username, email, password, user_level) VALUES (%s, %s, %s, %s)', (username, email, password, user_level,))
-                mysql.connection.commit()
-                message = "You have successfully Registered!"
-                return redirect(url_for('login'))
+                cursor.execute('SELECT * FROM user WHERE email = %s', (email,))
+                account = cursor.fetchone()
+                if account:
+                    message = "Account Already Exists!"
+                elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+                    message = "Invalid Email Address!"
+                elif len(password) < 6:
+                    message = "Password must be at least 6 characters long!"
+                else:
+                    cursor.execute('INSERT INTO user (username, email, password, user_level) VALUES (%s, %s, %s, %s)', (username, email, password, user_level,))
+                    connection.commit()
+                    message = "You have successfully Registered!"
+                    return redirect(url_for('login'))
+        except MySQLdb.OperationalError as e:
+            message = "Database error: " + str(e)
+        finally:
+            cursor.close()
+            connection.close()
     elif request.method == 'POST':
         message = "Please complete the Entry!"
     return render_template("level3/Register.html", message=message)
-    
+   
 
 """
 def valid_login(username, password):
@@ -966,9 +967,10 @@ def chat(shop_id):
     # Query the database for shop details
     cursor.execute("SELECT * FROM printingshops WHERE Shop_ID = %s", (shop_id,))
     shop_details = cursor.fetchone()
-    
+    """
     cursor.execute("SELECT order_ID FROM orders WHERE user_ID = %s ORDER BY order_ID DESC LIMIT 1", (user_id,))
     order_row = cursor.fetchone()
+    print(order_row)
     if order_row:
         order_id = order_row[0]
         print("orderID", order_id)
@@ -978,7 +980,7 @@ def chat(shop_id):
         print("Docs:",documents)
     else:
         return "Order not found."
-    
+    """
     # Store shop details in the session
     session['shop_details'] = {
         'shop_ID': shop_details[0],
@@ -1004,7 +1006,7 @@ def chat(shop_id):
     # Close database connection
     connection.close()
     # Render the template with messages and shop details
-    return render_template("level3/Chat_Page.html", last_messages=last_messages, shop_id=shop_id, messages=filtered_messages, documents=documents)
+    return render_template("level3/Chat_Page.html", last_messages=last_messages, shop_id=shop_id, messages=filtered_messages) #, documents=documents
 
 @app.route('/submit_message', methods=['POST'])
 def submit_message():

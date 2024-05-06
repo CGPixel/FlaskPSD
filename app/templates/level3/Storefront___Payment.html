@@ -3053,8 +3053,8 @@
 		left: 302px;
 		top: 0px;
 		position: absolute;
-		overflow: visible;
-		width: 182px;
+		overflow: hidden;
+		width: 350px;
 		white-space: nowrap;
 		text-align: left;
 		font-family: Arial;
@@ -3063,6 +3063,10 @@
 		font-size: 32px;
 		color: rgba(91,91,91,1);
 		letter-spacing: 0.2px;
+	}
+	#Plain_Paper_dl:hover {
+		cursor: context-menu;
+		overflow: visible;
 	}
 	#Paper_Size_dm {
 		position: absolute;
@@ -8068,7 +8072,7 @@
 			method: 'POST',
 			body: formData
 		}).then(response => {
-			alert("Upload successful.");
+			console.log("")
 		}).catch(error => {
 			console.error("Upload failed:", error);
 		});

@@ -340,7 +340,7 @@
 		text-align: left;
         top: -55px;
         left: 0px;
-        width: 728px;
+        width: 628px;
 		height: 105px; 
 		font-size: 40px;
 		text-indent: 34px;
@@ -462,13 +462,25 @@
 	}
 
 	#Show_Password{
-		top: 195px;
+		top: 190px;
+		left: 635px;
+		border: 5px solid #2f2f2f;
+		transition: border-color 0.3s;
 	} 
+	#Show_Password:hover {
+		border-color: #D3D3D3;
+	}
 	
 	#Show_Confirm_Password {
-		top: 330px;
+		top: 325px;
+		left: 635px;
+		border: 5px solid #2f2f2f;
+		transition: border-color 0.3s;
 	}
-
+	#Show_Confirm_Password:hover {
+		border-color: #D3D3D3;
+	}
+	
 	#Rectangle_19_mm {
 		fill: rgba(42,42,42,1);
 	}
@@ -3447,7 +3459,7 @@ window.application = new Application();
 			</div>
 			<div id="Confirm_Password">
 				<svg class="Rectangle_18_mg">
-					<rect id="Rectangle_18_mg" rx="20" ry="20" x="0" y="0" width="728" height="105">
+					<rect id="Rectangle_18_mg" rx="20" ry="20" x="0" y="0" width="628" height="105">
 					</rect>
 				</svg>
 				<div id="Confirm_Password_mh">
@@ -3456,7 +3468,7 @@ window.application = new Application();
 			</div>
 			<div id="Password_mi" class="Password">
 				<svg class="Rectangle_18_mj">
-					<rect id="Rectangle_18_mj" rx="20" ry="20" x="0" y="0" width="728" height="105">
+					<rect id="Rectangle_18_mj" rx="20" ry="20" x="0" y="0" width="628" height="105">
 					</rect>
 				</svg>
 				<div id="Password_mk">
@@ -3470,16 +3482,11 @@ window.application = new Application();
 				</svg>
 			</div>
 			<form id="signupForm" method="post">
-				{% if error %}
-				<div class="w3-panel w3-red">
-					<h3>{{message}}</h3>
-				</div>
-				{% endif %}
 				<!-- Email input field -->
 				<input type="text" id="Username_Input" name="username" placeholder="Username" required autocomplete="off"><br><br>
 				
 				<!-- Email input field -->
-				<input type="email" id="Email_Input" name="email" placeholder="Email" required><br><br>
+				<input type="email" id="Email_Input" name="email" placeholder="Email" autocomplete="off" required><br><br>
 
 				<!-- Password input field -->
 				<input type="password" id="Password_Input" name="password" placeholder="Password" required autocomplete="new-password">
@@ -3532,66 +3539,71 @@ window.application = new Application();
 		var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		return emailRegex.test(email);
 	}
+	function isValidUsername(username) {
+		// Regular expression to match the conditions
+		var regex = /^([a-zA-Z\s]|"[^"]*"|'[^']*')$/;
+
+		
+		// Test the username against the regex
+		return regex.test(username);
+	}
     function checkPasswords() {
 		var email = $('#Email_Input').val();
 		var password = $('#Password_Input').val();
 		var confirmPassword = $('#Confirm_Password_Input').val();
+		var username = $('#Username_Input').val(); // Added missing variable declaration
 		var signupButton = $('#Sign_Up_mn');
-	
-		if (email.lenght === 0 || password.length === 0 || confirmPassword.length === 0 || username.length === 0 ) {
-			alert("Fill in all data Entries!")
-			signupButton.text("Complete the Entry Above!").css({'color': 'red', 'font-size': '40px'}).addClass('shake');
+		
+		// Check if all fields are filled
+		if (username.length === 0 || email.length === 0 || password.length === 0 || confirmPassword.length === 0) {
+			signupButton.text("Complete the Entry Above").css({'color': 'red', 'font-size': '40px'}).addClass('shake');
 			setTimeout(function() {
 				signupButton.text("Sign Up").css({'color': '', 'font-size': ''}).removeClass('shake');
 			}, 500);
-			return false;
-		} 
-		
-		if (password.length < 6) {
-			alert("Password Must be equal to 6 or above")
-			// If password length is less than 6 characters, display a warning message
-			signupButton.text("Password too short").css({'color': '#FF6666', 'font-size': '40px'}).addClass('shake');
-			setTimeout(function() {
-				signupButton.text("").css({'color': '', 'font-size': ''}).removeClass('shake');
-			}, 1000);
-			setTimeout(function() {
-				signupButton.text("Password must be at least 6 characters long").css({'color': '#FF6666', 'font-size': '30px'});
-			}, 1000);
+			return false; // Prevent form submission
+		}
+
+		if (isValidUsername(username)) {
+			console.log("Username is invalid.");
+			signupButton.text("Invalid Username").css({'color': '#FF6666', 'font-size': '40px'}).addClass('shake');
 			setTimeout(function() {
 				signupButton.text("Sign Up").css({'color': 'white', 'font-size': '40px'}).removeClass('shake');
 			}, 2000);
 			return false;
 		}
+
+		// Check password length
+		if (password.length < 6) {
+			signupButton.text("Password too short").css({'color': '#FF6666', 'font-size': '40px'}).addClass('shake');
+			setTimeout(function() {
+				signupButton.text("Sign Up").css({'color': 'white', 'font-size': '40px'}).removeClass('shake');
+			}, 2000);
+			return false; // Prevent form submission
+		}
 	
-		// Check if passwords do match
-		if (password !== confirmPassword) {
-			// If passwords do not match, display a warning message
+		// Check if passwords match
+		if (password!== confirmPassword) {
 			signupButton.text("Passwords do not match. Please try again.").css({'color': 'red', 'font-size': '30px'}).addClass('shake');
 			setTimeout(function() {
 				signupButton.text("Sign Up").css({'color': '', 'font-size': ''}).removeClass('shake');
 			}, 1000);
-	
-			// Clear the password and confirm password fields
-			$('#Password_Input').val('');
-			$('#Confirm_Password_Input').val('');
-			return false;
+			return false; // Prevent form submission
 		}
 	
+		// Check email format
 		if (!checkEmail(email)) {
-			// If email format is not valid, display a warning message
 			signupButton.text("Invalid email address").css({'color': '#FF6666', 'font-size': '40px'}).addClass('shake');
-			setTimeout(function() {
-				signupButton.text("").css({'color': '', 'font-size': ''}).removeClass('shake');
-			}, 1000);
 			setTimeout(function() {
 				signupButton.text("Please enter a valid email address").css({'color': '#FF6666', 'font-size': '30px'});
 			}, 1000);
 			setTimeout(function() {
 				signupButton.text("Sign Up").css({'color': 'white', 'font-size': '40px'}).removeClass('shake');
 			}, 2000);
-			return false;
+			return false; // Prevent form submission
 		}
-		alert("Pass")
+	
+		// If all checks pass, submit the form
+		alert("Account Created!")
 		$('#registration_form').submit(); // Submit the form
 	}
 	
@@ -3607,11 +3619,11 @@ window.application = new Application();
 		// Send POST request
 		$.ajax({
 			type: 'POST',
-			url: 'register',
+			url: 'shop/register',
 			data: formData,
 			success: function(response) {
 				// Redirect to login page upon successful signup
-				window.location.href = '/shop/shop_sign_in';
+				window.location.href = 'shop_signn_in';
 			},
 			error: function(xhr, status, error) {
 				console.error(xhr.responseText);
