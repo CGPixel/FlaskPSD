@@ -1,8 +1,7 @@
 from app import app
 from app import process
 from flask import render_template, request, redirect, url_for, session, flash, jsonify
-import MySQLdb, MySQLdb.cursors, re, os, current_time, pytz, datetime
-from werkzeug.security import generate_password_hash
+import MySQLdb, MySQLdb.cursors, re, os, pytz, datetime
 from functools import wraps
 from flask_mysqldb import MySQL
 from werkzeug.utils import secure_filename
@@ -65,6 +64,13 @@ def get_orders(user_id):
     cursor.close()
     return orders
 
+def get_db():
+    try:
+        return mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    except MySQLdb.OperationalError:
+        # Attempt to reconnect
+        mysql.connection = mysql.connect()
+        return mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 """
 def login_required(f):
     @wraps(f)
@@ -99,7 +105,7 @@ def login():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor = get_db()
         cursor.execute('SELECT * FROM user WHERE username = %s AND password = %s AND user_level IN ("Printing Shop", "Customer")', (username, password, ))
         user = cursor.fetchone()
         if user:
