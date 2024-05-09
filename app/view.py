@@ -7,6 +7,7 @@ from flask_mysqldb import MySQL
 from werkzeug.utils import secure_filename
 from flask_dropzone import Dropzone
 from datetime import datetime
+from flask_mysqldb import MySQL
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app.secret_key = '\xd9\xdbg\x8f\x19q8l\x17\x9bD4D\x14\x9ff\xed\xd0\xb0\xf6!\xa3\x9dn'
@@ -105,9 +106,11 @@ def login():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
-        cursor = get_db()
+        connection = get_db_connection()
+        cursor = connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM user WHERE username = %s AND password = %s AND user_level IN ("Printing Shop", "Customer")', (username, password, ))
         user = cursor.fetchone()
+        print(user)
         if user:
             session['loggedin'] = True
             session['user_ID'] = user['user_ID']
@@ -115,8 +118,12 @@ def login():
             session['email'] = user['email']
             session['user_level'] = user['user_level']
             if user['user_level'] == 'Printing Shop':
+                cursor.close()
+                connection.close()
                 return redirect(url_for("shop_dashboard"))
             elif user['user_level'] == 'Customer':
+                cursor.close()
+                connection.close()
                 return redirect(url_for("dashboard"))
         else:
             return redirect(url_for('login', incorrect=True))
