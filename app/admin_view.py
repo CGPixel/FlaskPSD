@@ -68,7 +68,8 @@ def admin_sign_in():
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
         username = request.form['username']
         password = request.form['password']
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        connection = get_db_connection()
+        cursor = connection.cursor(MySQLdb.cursors.DictCursor)
         # Adjusted SQL query to include a condition for user_level being 'Printing Shop' or 'Customer'
         cursor.execute('SELECT * FROM user WHERE username = %s AND password = %s AND user_level IN ("Printing Shop", "Customer", "Admin")', (username, password, ))
         user = cursor.fetchone()
