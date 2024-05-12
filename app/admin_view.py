@@ -123,13 +123,13 @@ def admin_delete():
         user_id = request.json.get('userId')
         print(user_id)
         if user_id:
-            db = get_db_connection()
-            cursor = db.cursor()
+            connection = get_db_connection()
+            cursor = connection.cursor()
             sql_delete_query = "DELETE FROM user WHERE user_ID = %s"
             cursor.execute(sql_delete_query, (user_id,))
-            db.commit()
+            connection.commit()
             cursor.close()
-            db.close()
+            connection.close()
             return "User deleted successfully", 200
         else:
             return "No user ID provided", 400
@@ -172,7 +172,7 @@ def admin_shop():
             except Exception as e:
                 print(f"Error updating database: {e}")
                 return "Error updating database", 500
-        
+
     connection = get_db_connection()
     cursor = connection.cursor()
     cursor.execute("SELECT ps.*, u.email, u.phone_number, c.category_name FROM printingshops ps LEFT JOIN user u ON ps.user_ID = u.user_ID LEFT JOIN category c ON ps.shop_ID = c.shop_ID WHERE ps.Approved = '0' OR ps.Approved = ''")
@@ -197,8 +197,8 @@ def admin_reject():
             except Exception as e:
                 print(f"Error deleting from database: {e}")
                 return "Error deleting from database", 500
-            
-            
+
+
 @app.route("/admin/customer_service_reply")
 def admin_reply():
     return render_template("level1/Admin_Customer_Service_Page___Reply.html")

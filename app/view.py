@@ -61,7 +61,7 @@ def get_orders(user_id):
     connection = get_db_connection()
     cursor = connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("SELECT * FROM orders WHERE user_ID = %s", (user_id,))
-    orders = cursor.fetchone() 
+    orders = cursor.fetchone()
     cursor.close()
     return orders
 
@@ -152,7 +152,7 @@ def dashboard():
     return render_template('level3/Dashboard.html', shops=shops, page=page, total_pages=total_pages)
 
 @app.route("/register", methods=['GET', 'POST'])
-def Register():   
+def Register():
     message = ""
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         username = request.form['username']
@@ -188,7 +188,7 @@ def Register():
     elif request.method == 'POST':
         message = "Please complete the Entry!"
     return render_template("level3/Register.html", message=message)
-   
+
 
 """
 def valid_login(username, password):
@@ -205,7 +205,7 @@ def log_the_user_in(username):
 @app.route("/change_password", methods=["GET", "POST"])
 def change_Password():
     users = get_username()
-    
+
     if request.method == "POST":
         username = request.form.get('Username_Input')
         old_password = request.form.get('Old_Password_Input')
@@ -220,7 +220,7 @@ def change_Password():
         # Check if the username and old password match
         user = next((user for user in users if user['username'] == username and user['password'] == old_password), None)
         if user is None:
-            return redirect(url_for('change_Password', NotMatch=True, 
+            return redirect(url_for('change_Password', NotMatch=True,
                                     Username_Input=username,
                                     Old_Password_Input=old_password,
                                     New_Password_Input=new_password,
@@ -228,7 +228,7 @@ def change_Password():
 
         # Check if the new password and confirm new password match and are greater than 6 characters
         if new_password != confirm_new_password or len(new_password) < 6:
-            return redirect(url_for('change_Password', PasswordNotMatch=True, 
+            return redirect(url_for('change_Password', PasswordNotMatch=True,
                                     Username_Input=username,
                                     Old_Password_Input=old_password,
                                     New_Password_Input=new_password,
@@ -236,19 +236,19 @@ def change_Password():
 
         # Check if either the new password or confirm password is the same as the old password
         if old_password == new_password or old_password == confirm_new_password:
-            return redirect(url_for('change_Password', PasswordSameAsOld=True, 
+            return redirect(url_for('change_Password', PasswordSameAsOld=True,
                                     Username_Input=username,
                                     Old_Password_Input=old_password,
                                     New_Password_Input=new_password,
                                     Confirm_New_Password_Input=confirm_new_password))
-            
+
         # Update the password
         cursor.execute("UPDATE user SET password = %s WHERE username = %s", (new_password, username))
         db.commit()
         cursor.close()
         db.close()
-        
-        return redirect(url_for('login', 
+
+        return redirect(url_for('login',
             Username_Input='',
             Old_Password_Input='',
             New_Password_Input='',
@@ -263,11 +263,11 @@ def store_Front_Pick_a_Product(Shop_Name):
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM printingshops WHERE Shop_Name = %s", (Shop_Name,))
         new_shop_data = cursor.fetchone()
-        
+
         if new_shop_data is not None:  # Check if data is fetched
             session['Shop_Name'] = new_shop_data[2]
             session['Description'] = "\"" + new_shop_data[7] + "\"" if new_shop_data[7] else None
-            
+
             # Get shop_ID from new_shop_data
             shop_ID = new_shop_data[0]
             # Retrieve category data based on shop_ID
@@ -280,7 +280,7 @@ def store_Front_Pick_a_Product(Shop_Name):
             else:
                 # Clear the category_data session variable if category data is not fetched
                 session.pop('category_data', None)
-    
+
     user_id = session.get('user_ID')
     if Shop_Name.lower() == "dashboard":
         return redirect(url_for("dashboard"))
@@ -391,7 +391,7 @@ def save_form_data():
 
     # Insert data into the orders table
     cursor.execute("""
-    INSERT INTO orders (user_ID, info_ID, shop_ID, order_date, delivery_address, quantity, subtotal, total, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""", 
+    INSERT INTO orders (user_ID, info_ID, shop_ID, order_date, delivery_address, quantity, subtotal, total, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""",
                        (user_id, info_id, shop_ID, order_date, delivery_address, quantity, subtotal, total, status))
     conn.commit()
 
@@ -422,7 +422,7 @@ def store_Front_Approval():
                 shop_id, order_id, order_date, delivery_address, quantity, subtotal, total, status, papersize, print_pages, print_sides, orientation, paper_type, copies, grayscale = result_order
                 # Convert grayscale value to "Yes" or "No"
                 grayscale_text = "Yes" if grayscale == "1" else "No"
-                
+
                 # Query to count the number of documents associated with the latest order_ID
                 sql_document_count = """
                 SELECT COUNT(*)
@@ -435,7 +435,7 @@ def store_Front_Approval():
                     filecount = result_document_count[0]
                 else:
                     filecount = 0  # Default to 0 if no documents are found
-                    
+
                 # Render the template with order details and filecount
                 return render_template("level3/Storefront___Approval___Waiting.html",
                                        papersize=papersize,
@@ -456,7 +456,7 @@ def store_Front_Approval():
         cursor.close()
         connection.close()
 
-        
+
 @app.route("/approved")
 def store_Front_Approved():
     user_id = session.get('user_ID')
@@ -482,7 +482,7 @@ def store_Front_Approved():
                 # Convert grayscale value to "Yes" or "No"
                 print(type(grayscale))
                 grayscale_text = "Yes" if grayscale == "1" else "No"
-                
+
                 # Query to count the number of documents associated with the latest order_ID
                 sql_document_count = """
                 SELECT COUNT(*)
@@ -539,7 +539,7 @@ def store_Front_Payment():
                 shop_id, order_id, order_date, delivery_address, quantity, subtotal, total, status, papersize, print_pages, print_sides, orientation, paper_type, copies, grayscale = result_order
                 # Convert grayscale value to "Yes" or "No"
                 grayscale_text = "Yes" if grayscale == "1" else "No"
-                
+
                 # Query to count the number of documents associated with the latest order_ID
                 sql_document_count = """
                 SELECT COUNT(*)
@@ -576,24 +576,24 @@ def store_Front_Payment():
 def update_order_status():
     # Get the user ID from the request data
     user_id = request.json.get('userID')
-    
+
     # Connect to the database
     db = get_db_connection()
-    
+
     # Create a cursor object
     cursor = db.cursor()
-    
+
     # Query to find the latest order ID for the given user ID
     query = "SELECT MAX(order_ID) AS latest_order_id FROM orders WHERE user_ID = %s"
     cursor.execute(query, (user_id,))
-    
+
     # Fetch the result
     result = cursor.fetchone()
-    
+
     # Check if an order was found
     if result:
         latest_order_id = result[0]
-        
+
         # Insert a new transaction record with status 'To Receive'
         insert_query = "INSERT INTO transactions (user_ID, Order_ID, Status) VALUES (%s, %s, 'To Receive')"
         cursor.execute(insert_query, (user_id, latest_order_id))
@@ -613,7 +613,7 @@ def get_gcash():
         print("POST")
         conn = get_db_connection() # Assuming you have a function to get the database connection
         cursor = conn.cursor()
-        
+
         # Get order_ID from session data
         user_ID = session["user_ID"] # Assuming you have session handling set up
         cursor.execute("SELECT order_ID FROM orders WHERE user_ID = %s ORDER BY order_ID DESC LIMIT 1", (user_ID,))
@@ -622,9 +622,9 @@ def get_gcash():
             order_ID = order[0]
         else:
             return "No orders found for the user."
-        
+
         payment_method = "Gcash" # Default payment method
-        
+
         # Upload image
         file_url = '' # Initialize file_url as empty
         if payment_method == "Gcash" and "filename" in request.files:
@@ -634,14 +634,14 @@ def get_gcash():
                 file_path = os.path.join(app.config['Gcash_Payments'], filename)
                 file.save(file_path)
                 file_url = os.path.join('static', 'Gcash_Payments', filename)
-        
-        
+
+
         # Process form submission
         if not file_url:
             payment_method = "COD" # Update payment method if Gcash checkbox is checked
         # Insert data into payments table
         payment_status = "Pending"
-        
+
         # Get the current time in UTC
         now_utc = datetime.utcnow()
 
@@ -651,14 +651,14 @@ def get_gcash():
 
         # Format the Philippine time as a timestamp
         payment_date = now_ph.strftime('%Y-%m-%d %H:%M:%S')
-        
+
         cursor.execute("INSERT INTO payments (order_ID, payment_method, payment_status, payment_date, receipt) VALUES (%s, %s, %s, %s, %s)",
                        (order_ID, payment_method, payment_status, payment_date, file_url))
         conn.commit()
-        
+
         cursor.close()
         conn.close()
-        
+
         return "Payment information inserted successfully."
     return "Gcash"
 
@@ -686,8 +686,8 @@ def my_Purchase_Completed():
 def my_Account():
     session['came_from_pick_a_product'] = False
     user_id = session.get('user_ID')
-    if 'user_ID' not in session:
-        return redirect(url_for('login'))
+    #if 'user_ID' not in session:
+        #return redirect(url_for('login'))
 
     # Use a single cursor creation and ensure it's properly managed
     try:
@@ -770,12 +770,12 @@ def set_default_address():
 
     # Fetch address details for the default address
     sql_address_query = """
-    SELECT 
+    SELECT
         a.address_user,
         a.phone_number
-    FROM 
+    FROM
         address a
-    WHERE 
+    WHERE
         a.default_address = 1 AND a.user_ID = %s
     """
     cursor.execute(sql_address_query, (user_id,))
@@ -793,7 +793,7 @@ def set_default_address():
         cursor.execute(sql_user_update_query, (phone_number, address_user, user_id))
         connection.commit()
         cursor.close()
-        
+
         return {'message': 'Default address updated successfully'}, 200
     else:
         cursor.close()
@@ -807,7 +807,7 @@ def my_Address():
         new_phone_number = "0" # Temporary number
         new_address = "Address" # Temporary address
         default_address = "" # Not default
-        
+
         connection = get_db_connection()
         cursor = connection.cursor()
         sql_insert_query = """
@@ -833,7 +833,7 @@ def my_Address():
 
             # Alternatively, set specific fields in the session
             session['address_ID'] = addresses[0]['address_ID']
-            session['address_user'] = addresses[0]['address_user']  
+            session['address_user'] = addresses[0]['address_user']
             session['phone_number'] = addresses[0]['phone_number']
 
         return render_template("level3/My_Addresses.html", addresses=addresses, came_from_pick_a_product=came_from_pick_a_product)
@@ -885,7 +885,7 @@ def edit_Address(address_id):
 
         # Determine the value of default_address based on whether the checkbox is checked
         default_address = 1 if request.form.get('set_default') == '1' else ""
-        
+
         # Connect to the database
         connection = get_db_connection()
         cursor = connection.cursor()
@@ -902,12 +902,12 @@ def edit_Address(address_id):
 
         # Fetch address details for the default address
         sql_address_query = """
-        SELECT 
+        SELECT
             a.address_user,
             a.phone_number
-        FROM 
+        FROM
             address a
-        WHERE 
+        WHERE
             a.default_address = 1 AND a.user_ID = %s
         """
         cursor.execute(sql_address_query, (user_id,))
@@ -924,11 +924,11 @@ def edit_Address(address_id):
             """
             cursor.execute(sql_user_update_query, (phone_number, address_user, user_id))
             connection.commit()
-        
+
         # Close the cursor and connection
         cursor.close()
         connection.close()
-        
+
         # Redirect back to the edit address page
         return redirect(url_for('edit_Address', address_id=address_id))
 
@@ -953,7 +953,7 @@ def my_Pending_Approval():
     # Render template with orders data
     return render_template("level3/Checkouts___1.html", orders=orders)
 
-@app.route("/my_Checkout")  
+@app.route("/my_Checkout")
 def my_Checkout():
     return render_template("level3/Checkouts.html")
 
@@ -970,7 +970,7 @@ def chat(shop_id):
     user_id = session.get('user_ID')
     connection = get_db_connection()
     cursor = connection.cursor()
-    
+
     # Query the database for shop details
     cursor.execute("SELECT * FROM printingshops WHERE Shop_ID = %s", (shop_id,))
     shop_details = cursor.fetchone()
@@ -1003,7 +1003,7 @@ def chat(shop_id):
     # Fetch all messages for the given shop and user
     cursor.execute("SELECT * FROM messages WHERE Shop_ID = %s AND user_ID = %s ORDER BY TimeStamp ASC", (shop_id, session.get('user_ID')))
     messages = cursor.fetchall()
-    
+
     # Filter out messages with different shop_ID
     filtered_messages = [message for message in messages if message[2] == session['shop_details']['shop_ID']]
 

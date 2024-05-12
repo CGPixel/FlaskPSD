@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="icon" type="image/x-icon" href="/static/images/WebsiteIcon.png">
 <style id="applicationStylesheet" type="text/css">
+	@font-face {
+		font-family: 'Herborn';
+		src: url('{{ url_for('static', filename='fonts/Herborn.ttf') }}') format('truetype');
+	}
 	.mediaViewInfo {
 		--web-view-name: Dashboard;
 		--web-view-id: Dashboard;
@@ -4435,6 +4439,7 @@
 		transform: matrix(1,0,0,1,0,0);
 	}
 	#Logo {
+		font-family: 'Herborn', sans-serif;
 		position: fixed;
 		width: 500px;
 		height: 111px;

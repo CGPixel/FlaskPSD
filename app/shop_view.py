@@ -36,7 +36,7 @@ def shop_logout():
     session.pop('user_ID', None)
     session.clear()
     return redirect(url_for("shop_register"))
-    
+
 @app.route("/shop/register", methods=['GET', 'POST'])
 def shop_register():
     message = ""
@@ -48,7 +48,8 @@ def shop_register():
         if len(password) < 6:
             message = "Password must be at least 6 characters long!"
         else:
-            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            connection = get_db_connection()
+            cursor = connection.cursor()
             cursor.execute('SELECT * FROM user WHERE username = %s', (email,))
             account = cursor.fetchone()
             if account:
@@ -59,7 +60,9 @@ def shop_register():
                 message = "Please complete the Entry!"
             else:
                 cursor.execute('INSERT INTO user (username, email, password, user_level) VALUES (%s, %s, %s, %s)', (username, email, password, user_level,))
-                mysql.connection.commit()
+                connection.commit()
+                cursor.close()
+                connection.close()
                 message = "You have successfully Registered!"
                 return redirect(url_for('shop_sign_in'))
     elif request.method == 'POST':
@@ -115,7 +118,7 @@ def shop_register_service():
 def shop_register_shop():
     if request.method == 'GET':
         user_id = session.get('user_ID')
-        
+
         connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM printingshops WHERE user_ID = %s", (user_id,))
@@ -129,17 +132,17 @@ def shop_register_shop():
             session["Postal_Code"] = new_shop_data[5]
             session["Number"] = new_shop_data[6]
             session["Description"] = new_shop_data[7]
-            
+
     if request.method == 'POST':
         user_id = session.get('user_ID')
         if user_id is None:
             return "User ID not found in session", 400
 
         shop_name = request.form.get('username')
-        shop_address = request.form.get('address')
+        shop_address = request.form.get('pickupAddress')
         detail_address = request.form.get('detailAddress')  # Assuming you added a name attribute to this field
         postal_code = request.form.get('postalCode')
-        phone_number = request.form.get('phoneNumber')
+        phone_number = request.form.get('phone_Number')
         # Check if the user already has a shop
         connection = get_db_connection()
         if connection is None:
@@ -154,7 +157,7 @@ def shop_register_shop():
                 cursor.close()
                 connection.close()
                 # User already has a shop, redirect to /register_profile
-                return redirect('shop_register_profile')
+                return redirect('register_profile')
 
             # Insert new shop into database
             cursor.execute("INSERT INTO printingshops (user_ID, Shop_Name, Shop_Address, Detail_Address, Postal_Code, Number) VALUES (%s, %s, %s, %s, %s, %s)",
@@ -175,16 +178,16 @@ def shop_register_shop():
 def shop_register_profile():
     if request.method == "GET":
         user_id = session.get('user_ID')
-        
+
         connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM printingshops WHERE user_ID = %s", (user_id,))
         new_shop_data = cursor.fetchone()
-        
+
         # Retrieve shop_ID from printingshops table based on user_ID
         cursor.execute("SELECT shop_ID FROM printingshops WHERE user_ID = %s", (user_id,))
         shop_data = cursor.fetchone()
-        
+
         if new_shop_data:
             session["shop_ID"] = new_shop_data[0]
             session["Shop_Name"] = new_shop_data[2]
@@ -193,14 +196,14 @@ def shop_register_profile():
             session["Postal_Code"] = new_shop_data[5]
             session["Number"] = new_shop_data[6]
             session['Description'] = new_shop_data[7].replace('&#34;', '')
-            
+
         if shop_data:
             shop_ID = shop_data[0]
-            
+
             # Check if shop_ID exists in the category table
             cursor.execute("SELECT category_name FROM category WHERE shop_ID = %s", (shop_ID,))
             category_data = cursor.fetchone()
-            
+
             if category_data:
                 # Update category_name if shop_ID exists
                 session["category_name"] = category_data[0]
@@ -208,10 +211,10 @@ def shop_register_profile():
                 connection.commit()
             else:
                 # Insert new record if shop_ID does not exist
-                session["category_name"] = "Default Category"
+                session["category_name"] = ""
                 cursor.execute("INSERT INTO category (shop_ID, category_name) VALUES (%s, %s)", (shop_ID, session["category_name"]))
                 connection.commit()
-        
+
         # Check if category_data is not None and contains at least one element
         if category_data and category_data[0]:
             category_names = [tag.strip() for tag in category_data[0].split(',')]  # Remove leading and trailing spaces from each category
@@ -237,7 +240,7 @@ def save_form_data_input():
     # Retrieve shop_ID associated with the user_ID
     cursor.execute("SELECT shop_ID FROM printingshops WHERE user_ID = %s", (user_ID,))
     shop_data = cursor.fetchone()
-    
+
     if shop_data:
         shop_ID = shop_data[0]
         # Update 'Description' in 'printingshops' table
@@ -247,11 +250,11 @@ def save_form_data_input():
         cursor.execute("INSERT INTO printingshops (user_ID, Description) VALUES (%s, %s)", (user_ID, description))
         db.commit()  # Commit the transaction to get the auto-generated shop_ID
         shop_ID = cursor.lastrowid
-    
+
     # Check if category exists for the shop_ID
     cursor.execute("SELECT * FROM category WHERE shop_ID = %s", (shop_ID,))
     category_data = cursor.fetchone()
-    
+
     if category_data:
         # Update the category_name column with the new set of tags
         cursor.execute("UPDATE category SET category_name = %s WHERE shop_ID = %s", (sorted_tags_str, shop_ID))
@@ -274,12 +277,12 @@ def shop_register_submitted():
 def shop_info():
     if request.method == "GET":
         user_id = session.get('user_ID')
-        
+
         connection = get_db_connection()
         cursor = connection.cursor()
         cursor.execute("SELECT * FROM printingshops WHERE user_ID = %s", (user_id,))
         new_shop_data = cursor.fetchone()
-        
+
         if new_shop_data:
             session["shop_ID"] = new_shop_data[0]
             session["Shop_Name"] = new_shop_data[2]
@@ -288,7 +291,7 @@ def shop_info():
             session["Postal_Code"] = new_shop_data[5]
             session["Number"] = new_shop_data[6]
             session['Description'] = new_shop_data[7].replace('&#34;', '"')
-    
+
     return render_template("level2/Manage_Shop___Shop_Info.html", new_shop_data=new_shop_data   )
 
 @app.route("/shop/profile_picture", methods=["POST"])
@@ -302,15 +305,15 @@ def upload_profile_picture():
         # Construct the path to the static directory
         static_dir = app.static_folder
         profile_pictures_dir = os.path.join(static_dir, 'User_Profiles')
-        
+
         # Ensure the Profile_Pictures directory exists
         if not os.path.exists(profile_pictures_dir):
             os.makedirs(profile_pictures_dir)
-        
+
         # Save the file to the Profile_Pictures directory
         file_path = os.path.join(profile_pictures_dir, file.filename)
         file.save(file_path)
-        
+
         # Return the URL of the uploaded file
         return url_for('static', filename='User_Profiles/' + file.filename)
 
