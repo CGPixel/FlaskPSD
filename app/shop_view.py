@@ -99,14 +99,28 @@ def shop_sign_in():
 @app.route("/shop/dashboard")
 def shop_dashboard():
     if 'username' in session and session['user_level'] == 'Printing Shop':
-        # Assuming you have a user_id stored in the session
         user_id = session['user_ID']
         conn = get_db_connection()
         cursor = conn.cursor()
+
+        # Fetching approval status
         cursor.execute("SELECT Approved FROM printingshops WHERE user_id = %s", (user_id,))
         result = cursor.fetchone()
-        # Extract the approval status from the result tuple and convert it to boolean
         approval_status = result[0] == '1' if result else False
+
+        # Fetching user details
+        cursor.execute("SELECT * FROM printingshops WHERE user_ID = %s", (user_id,))
+        new_shop_data = cursor.fetchone()
+
+        if new_shop_data:
+            session["shop_ID"] = new_shop_data[0]
+            session["Shop_Name"] = new_shop_data[2]
+            session["Shop_Address"] = new_shop_data[3]
+            session["Detail_Address"] = new_shop_data[4]
+            session["Postal_Code"] = new_shop_data[5]
+            session["Number"] = new_shop_data[6]
+            session["Description"] = new_shop_data[7]
+
         return render_template('level2/Shop_Dashboard.html', approved=approval_status)
     return redirect(url_for('shop_sign_in'))
 
@@ -327,4 +341,19 @@ def shop_review():
 
 @app.route("/shop/orders", methods=["GET", "POST"])
 def shop_orders():
-    return render_template("level2/Manage_Shop___Orders.html")
+    shop_ID = session.get('user_ID')
+    
+    # Fetch data from the database based on user_ID
+    db_connection = get_db_connection()
+    cursor = db_connection.cursor()
+    
+    # Fetch order data from the database based on user_ID
+    cursor.execute("SELECT orders.*, user.*, orderinfo.*, printingshops.*, (SELECT COUNT(*) FROM documents WHERE orders.order_ID = documents.info_ID) AS num_documents FROM orders INNER JOIN user ON orders.user_ID = user.user_ID INNER JOIN orderinfo ON orders.info_ID = orderinfo.Info_ID INNER JOIN printingshops ON orders.shop_ID = printingshops.user_ID WHERE orders.shop_ID = %s GROUP BY orders.order_ID", (shop_ID,))
+    orders = cursor.fetchall()
+    print(orders)
+    # Close the database connection
+    cursor.close()
+    db_connection.close()
+    
+    # Render the template with the fetched data
+    return render_template("level2/Manage_Shop___Orders.html", orders=orders)

@@ -4836,7 +4836,8 @@ if (window.console==null) { window["console"] = { log : function() {} } }; // so
 			<textarea name="detailAddress" id="DetailInput" placeholder="Unit No., Building, street and etc..." autocomplete="off"></textarea>
 			<input type="text" name="postalCode" id="PostalInput" value="{{session.Postal_Code}}" autocomplete="off" maxlength="9">
 			<input type="email" name="email" id="emailInput" value="{{session.email}}" autocomplete="off">
-			<input type="number" name="number" id="numberInput" value="{{session.Number}}" autocomplete="off" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11">			<button id="Save_Form_Button"></button>
+			<input type="number" name="number" id="numberInput" value="{{session.Number}}" autocomplete="off" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="11">
+			<button id="Save_Form_Button"></button>
 		</form>
 		<div id="Save_Form">
 			<svg class="Rectangle_61_form">
@@ -5048,7 +5049,9 @@ if (window.console==null) { window["console"] = { log : function() {} } }; // so
 					processData: false,
 					contentType: false,
 					success: function (response) {
-						console.log('File uploaded successfully');
+						alert('File uploaded successfully');
+						$("#imagePreview img:last-child").remove(); //remove img
+						$("#imagePreview").removeAttr("style"); //remove style
 					},
 					error: function (xhr, status, error) {
 						console.error('Error uploading file:', error);
@@ -5060,6 +5063,7 @@ if (window.console==null) { window["console"] = { log : function() {} } }; // so
 			}
 		});
 	});
+	
 	function checkEmail(email) {
 		// Regular expression for validating email format
 		var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -5084,8 +5088,14 @@ if (window.console==null) { window["console"] = { log : function() {} } }; // so
 			alert("Please Fix the Email")
 			return false; // Prevent form submission
 		}
-		
-
+		alert("Data Updated!")
+		document.getElementById("UsernameInput").value = "";
+		document.getElementById("DescriptionInput").value = "";
+		document.getElementById("AddressInput").value = "";
+		document.getElementById("DetailInput").value = "";
+		document.getElementById("PostalInput").value = "";
+		document.getElementById("emailInput").value = "";
+		document.getElementById("numberInput").value = "";
 		// If all fields are filled, you can proceed with form submission or other actions
 		// Example: document.getElementById("userInfoForm").submit();
 	});

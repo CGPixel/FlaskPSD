@@ -707,11 +707,12 @@
 	#Scroll_Group_3_k {
 		mix-blend-mode: normal;
 		position: absolute;
-		width: 1549px;
+		width: 1595px;
 		height: 465px;
 		left: 48.5px;
 		top: 170px;
 		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	#Sample_Order_k {
 		position: absolute;
@@ -722,12 +723,16 @@
 		overflow-y: auto;
 	}
 	#Sample_Order {
-		position: absolute;
+		position: relative;
 		width: 1549px;
 		height: 245.5px;
 		left: 0px;
 		top: 0px;
 		overflow: visible;
+	}
+	.Sample_Order {
+		height: 1534px;
+		margin: 20px;
 	}
 	#Line_87_k {
 		fill: transparent;
@@ -759,6 +764,7 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Full_Name_lb {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 166px;
@@ -766,10 +772,25 @@
 		left: 0px;
 		top: 55.5px;
 	}
+	#Full_Name {
+		left: 0px;
+		top: 52px;
+		position: absolute;
+		overflow: visible;
+		width: 264px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		color: rgba(52,52,52,1);
+	}
 	#Contact_Number_lc {
 		fill: rgba(229,217,217,1);
 	}
 	.Contact_Number_lc {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 123px;
@@ -777,16 +798,45 @@
 		left: 0px;
 		top: 90.5px;
 	}
+	#Contact_Number {
+		left: 0px;
+		top: 90px;
+		position: absolute;
+		overflow: visible;
+		width: 264px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(52,52,52,1);
+	}
 	#Full_Address_ld {
 		fill: rgba(229,217,217,1);
 	}
 	.Full_Address_ld {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 263px;
 		height: 51.004px;
 		left: 0px;
 		top: 117.5px;
+	}
+	#Full_Address {
+		left: 0px;
+		top: 130px;
+		position: absolute;
+		overflow: visible;
+		width: 264px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		color: rgba(52,52,52,1);
 	}
 	#Delivery_Address_le {
 		left: 0px;
@@ -806,6 +856,7 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Postal_Code_lf {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 89px;
@@ -847,6 +898,20 @@
 		top: 214px;
 		overflow: visible;
 	}
+	#Order_id {
+		left: 75px;
+		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 264px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 15px;
+		color: rgba(52,52,52,1);
+	}
 	#Order_ID_lj {
 		left: 0px;
 		top: 0px;
@@ -865,6 +930,7 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Date_Delivered {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 86px;
@@ -986,12 +1052,27 @@
 		fill: rgba(229,217,217,1);
 	}
 	.User_name_lt {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 116px;
 		height: 14px;
 		left: 0px;
 		top: 23.5px;
+	}
+	#User_name {
+		left: 0px;
+		top: 20px;
+		position: absolute;
+		overflow: visible;
+		width: 264px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 15px;
+		color: rgba(52,52,52,1);
 	}
 	#Message_Button_lu {
 		position: absolute;
@@ -6734,162 +6815,169 @@ window.application = new Application();
 			</div>
 		</div>
 		<div id="Scroll_Group_3_k">
+			{% for order in orders %}
 			<div id="Sample_Order" class="Sample_Order">
-				<svg class="Line_87_k" viewBox="0 0 1549 1">
-					<path id="Line_87_k" d="M 0 0 L 1549 0">
-					</path>
-				</svg>
-				<div id="Address_Used">
-					<svg class="Full_Name_lb">
-						<rect id="Full_Name_lb" rx="0" ry="0" x="0" y="0" width="166" height="25">
-						</rect>
+					<svg class="Line_87_k" viewBox="0 0 1549 1">
+						<path id="Line_87_k" d="M 0 0 L 1549 0">
+						</path>
 					</svg>
-					<svg class="Contact_Number_lc">
-						<rect id="Contact_Number_lc" rx="0" ry="0" x="0" y="0" width="123" height="17">
-						</rect>
-					</svg>
-					<svg class="Full_Address_ld">
-						<rect id="Full_Address_ld" rx="0" ry="0" x="0" y="0" width="263" height="51.004">
-						</rect>
-					</svg>
-					<div id="Delivery_Address_le">
-						<span>Delivery Address</span>
-					</div>
-					<svg class="Postal_Code_lf">
-						<rect id="Postal_Code_lf" rx="0" ry="0" x="0" y="0" width="89" height="17">
-						</rect>
-					</svg>
-				</div>
-				<svg class="Line_88_lg" viewBox="0 0 1 207.5">
-					<path id="Line_88_lg" d="M 0 0 L 0 207.5">
-					</path>
-				</svg>
-				<div id="Additional_Info_lh">
-					<div id="Order_ID">
-						<div id="Order_ID_lj">
-							<span>Order ID:</span>
+					<div id="Address_Used">
+						<svg class="Full_Name_lb">
+							<rect id="Full_Name_lb" rx="0" ry="0" x="0" y="0" width="166" height="25">
+							</rect>
+							<span id="Full_Name">{{ orders[loop.index - 1][13] }}</span>
+						</svg>
+						<svg class="Contact_Number_lc">
+							<rect id="Contact_Number_lc" rx="0" ry="0" x="0" y="0" width="123" height="17">
+							</rect>
+							<span id="Contact_Number">{{ orders[loop.index - 1][14] }}</span>
+						</svg>
+						<svg class="Full_Address_ld">
+							<rect id="Full_Address_ld" rx="0" ry="0" x="0" y="0" width="263" height="51.004">
+							</rect>
+							<span id="Full_Address">{{ orders[loop.index - 1][15] }}</span>
+						</svg>
+						<div id="Delivery_Address_le">
+							<span>Delivery Address</span>
 						</div>
-						<svg class="Date_Delivered">
-							<rect id="Date_Delivered" rx="0" ry="0" x="0" y="0" width="86" height="15">
+						<svg class="Postal_Code_lf">
+							<rect id="Postal_Code_lf" rx="0" ry="0" x="0" y="0" width="89" height="17">
 							</rect>
 						</svg>
 					</div>
-					<div id="Mode_of_Payment_____Gcash_ll">
-						<span>Mode of Payment</span><span style="font-style:normal;font-weight:bold;">     Gcash</span>
-					</div>
-					<div id="Payment_Details_lm">
-						<span>Payment Details</span>
-					</div>
-					<div id="Print_Cost______280">
-						<span>Print Cost</span><span style="font-style:normal;font-weight:bold;color:rgba(52,52,52,1);">      </span><span style="color:rgba(102,102,102,1);">₱280</span>
-					</div>
-					<div id="Shipping_Cost______45_lo">
-						<span>Shipping Cost</span><span style="font-style:normal;font-weight:bold;color:rgba(52,52,52,1);">      </span><span>₱45</span>
-					</div>
-					<div id="Estimated_Total_____325_lp">
-						<span>Estimated Total</span><span style="color:rgba(52,52,52,1);">     </span><span style="color:rgba(243,34,138,1);">₱325</span>
-					</div>
-					<svg class="Line_92_lq" viewBox="0 0 345 1">
-						<path id="Line_92_lq" d="M 345 0 L 0 0">
+					<svg class="Line_88_lg" viewBox="0 0 1 207.5">
+						<path id="Line_88_lg" d="M 0 0 L 0 207.5">
 						</path>
 					</svg>
-					<div id="Status_lr">
-						<div id="Printing">
-							<span>Printing</span>
+					<div id="Additional_Info_lh">
+						<div id="Order_ID">
+							<div id="Order_ID_lj">
+								<span>Order ID:</span>
+							</div>
+							<svg class="Date_Delivered">
+								<rect id="Date_Delivered" rx="0" ry="0" x="0" y="0" width="86" height="15">
+								</rect>
+							</svg>
+							<span id="Order_id">{{ orders[loop.index - 1][0] }}</span>
 						</div>
-						<svg class="User_name_lt">
-							<rect id="User_name_lt" rx="0" ry="0" x="0" y="0" width="116" height="14">
+						<div id="Mode_of_Payment_____Gcash_ll">
+							<span>Mode of Payment</span><span style="font-style:normal;font-weight:bold;">     Gcash</span>
+						</div>
+						<div id="Payment_Details_lm">
+							<span>Payment Details</span>
+						</div>
+						<div id="Print_Cost______280">
+							<span>Print Cost</span><span style="font-style:normal;font-weight:bold;color:rgba(52,52,52,1);">      </span><span style="color:rgba(102,102,102,1);">₱280</span>
+						</div>
+						<div id="Shipping_Cost______45_lo">
+							<span>Shipping Cost</span><span style="font-style:normal;font-weight:bold;color:rgba(52,52,52,1);">      </span><span>₱45</span>
+						</div>
+						<div id="Estimated_Total_____325_lp">
+							<span>Estimated Total</span><span style="color:rgba(52,52,52,1);">     </span><span style="color:rgba(243,34,138,1);">₱325</span>
+						</div>
+						<svg class="Line_92_lq" viewBox="0 0 345 1">
+							<path id="Line_92_lq" d="M 345 0 L 0 0">
+							</path>
+						</svg>
+						<div id="Status_lr">
+							<div id="Printing">
+								<span>Printing</span>
+							</div>
+							<svg class="User_name_lt">
+								<rect id="User_name_lt" rx="0" ry="0" x="0" y="0" width="116" height="14">
+								</rect>
+								<span id="User_name">{{ orders[loop.index - 1][29] }}</span>
+							</svg>
+							<div id="Message_Button_lu">
+								<svg class="Rectangle_69_lv">
+									<rect id="Rectangle_69_lv" rx="0" ry="0" x="0" y="0" width="70" height="19">
+									</rect>
+								</svg>
+								<img id="ID2849821_multimedia_social_sp_lw" src="{{ url_for('static', filename='images/ID2849821_multimedia_social_sp_lw.png') }}" srcset="{{url_for('static', filename='images/ID2849821_multimedia_social_sp_lw.png') }} 1x, {{url_for('static', filename='images/ID2849821_multimedia_social_sp_lw@2x.png')}} 2x">
+									
+								<div id="Message_lx">
+									<span>Message</span>
+								</div>
+							</div>
+							<div id="For_Pickup">
+								<svg class="Rectangle_61_l">
+									<linearGradient id="Rectangle_61_l" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+										<stop offset="0" stop-color="#ff74d0" stop-opacity="1"></stop>
+										<stop offset="1" stop-color="#ec10c8" stop-opacity="1"></stop>
+									</linearGradient>
+									<rect id="Rectangle_61_l" rx="0" ry="0" x="0" y="0" width="83.327" height="26.736">
+									</rect>
+								</svg>
+								<div id="For_Pickup_l">
+									<span>For Pickup</span>
+								</div>
+							</div>
+							<div id="Cancel">
+								<svg class="Rectangle_61_mb">
+									<linearGradient id="Rectangle_61_mb" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+										<stop offset="0" stop-color="#717171" stop-opacity="1"></stop>
+										<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
+									</linearGradient>
+									<rect id="Rectangle_61_mb" rx="0" ry="0" x="0" y="0" width="83.327" height="26.736">
+									</rect>
+								</svg>
+								<div id="Cancel_l">
+									<span>Cancel</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<svg class="Line_89_l" viewBox="0 0 1 207.5">
+						<path id="Line_89_l" d="M 0 0 L 0 207.5">
+						</path>
+					</svg>
+					<div id="Order_Details_l">
+						<div id="Order_Details_ma">
+							<span>Order Details</span>
+						</div>
+						<svg class="Rectangle_80_l">
+							<rect id="Rectangle_80_l" rx="29" ry="29" x="0" y="0" width="712" height="148">
 							</rect>
 						</svg>
-						<div id="Message_Button_lu">
-							<svg class="Rectangle_69_lv">
-								<rect id="Rectangle_69_lv" rx="0" ry="0" x="0" y="0" width="70" height="19">
-								</rect>
-							</svg>
-							<img id="ID2849821_multimedia_social_sp_lw" src="{{ url_for('static', filename='images/ID2849821_multimedia_social_sp_lw.png') }}" srcset="{{url_for('static', filename='images/ID2849821_multimedia_social_sp_lw.png') }} 1x, {{url_for('static', filename='images/ID2849821_multimedia_social_sp_lw@2x.png')}} 2x">
-								
-							<div id="Message_lx">
-								<span>Message</span>
+						<div id="Paper_Size____Letter_85_x_11_ma">
+							<span>Paper Size    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][20]}}</span>
+						</div>
+						<div id="Print_Pages___All_Pages__mb">
+							<span>Print Pages   </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][21]}} </span>
+						</div>
+						<div id="Print_Sides____Print_One_Sided_mc">
+							<span>Print Sides    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][22]}} </span>
+						</div>
+						<div id="Orientation____Portrait__md">
+							<span>Orientation    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][23]}} </span>
+						</div>
+						<div id="Paper_Type___Plain_Paper__me">
+							<span>Paper Type   </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][24]}} </span>
+						</div>
+						<svg class="Line_91_mf" viewBox="0 0 1 125">
+							<path id="Line_91_mf" d="M 0 0 L 0 125">
+							</path>
+						</svg>
+						<div id="Copies_____________________10_mg">
+							<span>Copies                     </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][25]}}</span>
+						</div>
+						<div id="Grayscale_Printing___No__mh">
+							<span>Grayscale Printing   </span><span style="font-style:normal;font-weight:bold;">{{ 'Yes' if orders[loop.index - 1][26] == '1' else 'No' }} </span>
+						</div>
+						<div id="File_mi">
+							<div id="Filename__________________assi_mj">
+								<span>Filecount                  </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][36]}} </span>
+							</div>
+							<div id="View_File_mk">
+								<span>View File</span>
 							</div>
 						</div>
-						<div id="For_Pickup">
-							<svg class="Rectangle_61_l">
-								<linearGradient id="Rectangle_61_l" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-									<stop offset="0" stop-color="#ff74d0" stop-opacity="1"></stop>
-									<stop offset="1" stop-color="#ec10c8" stop-opacity="1"></stop>
-								</linearGradient>
-								<rect id="Rectangle_61_l" rx="0" ry="0" x="0" y="0" width="83.327" height="26.736">
-								</rect>
-							</svg>
-							<div id="For_Pickup_l">
-								<span>For Pickup</span>
-							</div>
-						</div>
-						<div id="Cancel">
-							<svg class="Rectangle_61_mb">
-								<linearGradient id="Rectangle_61_mb" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-									<stop offset="0" stop-color="#717171" stop-opacity="1"></stop>
-									<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
-								</linearGradient>
-								<rect id="Rectangle_61_mb" rx="0" ry="0" x="0" y="0" width="83.327" height="26.736">
-								</rect>
-							</svg>
-							<div id="Cancel_l">
-								<span>Cancel</span>
-							</div>
+						<div id="Print_Service__Documents__ml">
+							<span>Print Service  </span><span style="font-style:normal;font-weight:bold;color:rgba(243,34,138,1);">Documents </span>
 						</div>
 					</div>
 				</div>
-				<svg class="Line_89_l" viewBox="0 0 1 207.5">
-					<path id="Line_89_l" d="M 0 0 L 0 207.5">
-					</path>
-				</svg>
-				<div id="Order_Details_l">
-					<div id="Order_Details_ma">
-						<span>Order Details</span>
-					</div>
-					<svg class="Rectangle_80_l">
-						<rect id="Rectangle_80_l" rx="29" ry="29" x="0" y="0" width="712" height="148">
-						</rect>
-					</svg>
-					<div id="Paper_Size____Letter_85_x_11_ma">
-						<span>Paper Size    </span><span style="font-style:normal;font-weight:bold;">Letter 8.5" x 11"</span>
-					</div>
-					<div id="Print_Pages___All_Pages__mb">
-						<span>Print Pages   </span><span style="font-style:normal;font-weight:bold;">All Pages </span>
-					</div>
-					<div id="Print_Sides____Print_One_Sided_mc">
-						<span>Print Sides    </span><span style="font-style:normal;font-weight:bold;">Print One Sided </span>
-					</div>
-					<div id="Orientation____Portrait__md">
-						<span>Orientation    </span><span style="font-style:normal;font-weight:bold;">Portrait </span>
-					</div>
-					<div id="Paper_Type___Plain_Paper__me">
-						<span>Paper Type   </span><span style="font-style:normal;font-weight:bold;">Plain Paper </span>
-					</div>
-					<svg class="Line_91_mf" viewBox="0 0 1 125">
-						<path id="Line_91_mf" d="M 0 0 L 0 125">
-						</path>
-					</svg>
-					<div id="Copies_____________________10_mg">
-						<span>Copies                     </span><span style="font-style:normal;font-weight:bold;">10</span>
-					</div>
-					<div id="Grayscale_Printing___No__mh">
-						<span>Grayscale Printing   </span><span style="font-style:normal;font-weight:bold;">No </span>
-					</div>
-					<div id="File_mi">
-						<div id="Filename__________________assi_mj">
-							<span>Filename                  </span><span style="font-style:normal;font-weight:bold;">assignment.pdf </span>
-						</div>
-						<div id="View_File_mk">
-							<span>View File</span>
-						</div>
-					</div>
-					<div id="Print_Service__Documents__ml">
-						<span>Print Service  </span><span style="font-style:normal;font-weight:bold;color:rgba(243,34,138,1);">Documents </span>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 			<!--<div id="Sample_Order_mm" class="Sample_Order">
 				<svg class="Line_87_mn" viewBox="0 0 1549 1">
 					<path id="Line_87_mn" d="M 0 0 L 1549 0">

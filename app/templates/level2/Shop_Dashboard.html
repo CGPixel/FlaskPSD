@@ -1194,7 +1194,7 @@
 		left: 17px;
 		top: 284px;
 		position: absolute;
-		overflow: visible;
+		overflow: hidden;
 		width: 325px;
 		white-space: nowrap;
 		text-align: left;
@@ -1205,6 +1205,11 @@
 		color: rgba(0,0,0,1);
 		letter-spacing: -0.7px;
 	}
+
+	#Vans_Computer__Print_Shop:hover {
+		overflow: visible
+	}
+
 	#ID3_Square_buttons_dk {
 		position: absolute;
 		width: 54px;
@@ -4302,6 +4307,7 @@
 		overflow: visible;
 	}
 	#Chat_Button {
+		display: none;
 		position: fixed;
 		width: 186px;
 		height: 58px;
@@ -7565,7 +7571,7 @@ window.application = new Application();
 		</div>
 		<div id="List">
 			<div id="Repeat_Grid">
-				<div id="Product_Frame1" class="Product_Frame1">
+				<!--<div id="Product_Frame1" class="Product_Frame1">
 					<svg class="Rectangle">
 						<rect id="Rectangle" rx="20" ry="20" x="0" y="0" width="363" height="247">
 						</rect>
@@ -7711,9 +7717,9 @@ window.application = new Application();
 						<rect id="Rectangle_57_cz" rx="0" ry="0" x="0" y="0" width="329" height="35">
 						</rect>
 					</svg>
-				</div>
+				</div>-->
 			</div>
-			<div id="I-Tech" class="I_Tech">
+			<!--<div id="I-Tech" class="I_Tech">
 				<img id="Mask_Group_4" src="{{ url_for('static', filename='Mask_Group_4.png') }}" srcset="{{url_for('static', filename='images/Mask_Group_4.png') }} 1x, {{url_for('static', filename='Mask_Group_4@2x.png')}} 2x">
 					
 				</svg>
@@ -7754,50 +7760,52 @@ window.application = new Application();
 					<img id="ID4280496_star_rating_icon3" src="{{ url_for('static', filename='ID4280496_star_rating_icon3.png') }}" srcset="{{url_for('static', filename='images/ID4280496_star_rating_icon3.png') }} 1x, {{url_for('static', filename='ID4280496_star_rating_icon3@2x.png')}} 2x">
 						
 				</div>
-			</div>
-			<div onclick="application.goToTargetView(event)" id="Vans_Prints" class="Vans_Prints">
-				<img id="Mask_Group_6" src="{{ url_for('static', filename='Mask_Group_6.png') }}" srcset="{{url_for('static', filename='images/Mask_Group_6.png') }} 1x, {{url_for('static', filename='Mask_Group_6@2x.png')}} 2x">
-					
-				</svg>
-				<svg class="Rectangle_20_di">
-					<linearGradient id="Rectangle_20_di" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-						<stop offset="0" stop-color="#fff" stop-opacity="1"></stop>
-						<stop offset="1" stop-color="#dfdfdf" stop-opacity="1"></stop>
-					</linearGradient>
-					<rect id="Rectangle_20_di" rx="0" ry="0" x="0" y="0" width="357" height="115">
-					</rect>
-				</svg>
-				<div id="Vans_Computer__Print_Shop">
-					<span>Vans Computer & Print Shop</span>
-				</div>
-				<div id="ID3_Square_buttons_dk" class="3_Square_buttons">
-					<svg class="Rectangle_21_dl">
-						<rect id="Rectangle_21_dl" rx="0" ry="0" x="0" y="0" width="12" height="13">
+			</div>-->
+			<a href="info">
+				<div id="Vans_Prints" class="Vans_Prints">
+					<img id="Mask_Group_6" src="{{ url_for('static', filename='Mask_Group_6.png') }}" srcset="{{url_for('static', filename='images/Mask_Group_6.png') }} 1x, {{url_for('static', filename='Mask_Group_6@2x.png')}} 2x">
+						
+					</svg>
+					<svg class="Rectangle_20_di">
+						<linearGradient id="Rectangle_20_di" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+							<stop offset="0" stop-color="#fff" stop-opacity="1"></stop>
+							<stop offset="1" stop-color="#dfdfdf" stop-opacity="1"></stop>
+						</linearGradient>
+						<rect id="Rectangle_20_di" rx="0" ry="0" x="0" y="0" width="357" height="115">
 						</rect>
 					</svg>
-					<svg class="Rectangle_22_dm">
-						<rect id="Rectangle_22_dm" rx="0" ry="0" x="0" y="0" width="12" height="13">
-						</rect>
-					</svg>
-					<svg class="Rectangle_23_dn">
-						<rect id="Rectangle_23_dn" rx="0" ry="0" x="0" y="0" width="12" height="13">
-						</rect>
-					</svg>
+					<div id="Vans_Computer__Print_Shop">
+						<span>{{session.Shop_Name}}</span>
+					</div>
+					<div id="ID3_Square_buttons_dk" class="3_Square_buttons">
+						<svg class="Rectangle_21_dl">
+							<rect id="Rectangle_21_dl" rx="0" ry="0" x="0" y="0" width="12" height="13">
+							</rect>
+						</svg>
+						<svg class="Rectangle_22_dm">
+							<rect id="Rectangle_22_dm" rx="0" ry="0" x="0" y="0" width="12" height="13">
+							</rect>
+						</svg>
+						<svg class="Rectangle_23_dn">
+							<rect id="Rectangle_23_dn" rx="0" ry="0" x="0" y="0" width="12" height="13">
+							</rect>
+						</svg>
+					</div>
+					<div id="Stars_do">
+						<img id="ID9035580_star_half_outline_ic_dp" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_dp.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_dp.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_dp@2x.png')}} 2x">
+							
+						<img id="ID9035580_star_half_outline_ic_dq" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_dq.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_dq.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_dq@2x.png')}} 2x">
+							
+						<img id="ID9035580_star_half_outline_ic_dr" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_dr.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_dr.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_dr@2x.png')}} 2x">
+							
+						<img id="ID9035580_star_half_outline_ic_ds" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_ds.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_ds.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_ds@2x.png')}} 2x">
+							
+						<img id="ID9035580_star_half_outline_ic_dt" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_dt.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_dt.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_dt@2x.png')}} 2x">
+							
+					</div>
 				</div>
-				<div id="Stars_do">
-					<img id="ID9035580_star_half_outline_ic_dp" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_dp.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_dp.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_dp@2x.png')}} 2x">
-						
-					<img id="ID9035580_star_half_outline_ic_dq" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_dq.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_dq.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_dq@2x.png')}} 2x">
-						
-					<img id="ID9035580_star_half_outline_ic_dr" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_dr.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_dr.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_dr@2x.png')}} 2x">
-						
-					<img id="ID9035580_star_half_outline_ic_ds" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_ds.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_ds.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_ds@2x.png')}} 2x">
-						
-					<img id="ID9035580_star_half_outline_ic_dt" src="{{ url_for('static', filename='ID9035580_star_half_outline_ic_dt.png') }}" srcset="{{url_for('static', filename='images/ID9035580_star_half_outline_ic_dt.png') }} 1x, {{url_for('static', filename='ID9035580_star_half_outline_ic_dt@2x.png')}} 2x">
-						
-				</div>
-			</div>
-			<div id="Erwinz" class="Erwinz">
+			</a>
+			<!--<div id="Erwinz" class="Erwinz">
 				<img id="Mask_Group_5" src="{{ url_for('static', filename='Mask_Group_5.png') }}" srcset="{{url_for('static', filename='images/Mask_Group_5.png') }} 1x, {{url_for('static', filename='Mask_Group_5@2x.png')}} 2x">
 					
 				</svg>
@@ -7838,7 +7846,7 @@ window.application = new Application();
 				<div id="Erwinz_Print_Shop">
 					<span>Erwinz Print Shop</span>
 				</div>
-			</div>
+			</div>-->
 		</div>
 		<div id="Previous_Button">
 			<svg class="Rectangle_26">
