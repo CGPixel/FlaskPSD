@@ -666,9 +666,21 @@ def get_gcash():
 def store_Front_Success():
     return render_template("level3/Storefront___Success.html")
 
-@app.route("/my_Purchase")
+@app.route("/my_Purchase", methods=["GET", "POST"])
 def my_Purchases():
-    return render_template("level3/My_Purchase___All.html")
+    # Connect to the database
+    connection = get_db_connection()
+    cursor = connection.cursor()
+
+    # Fetch data from the "orderinfo" table for the current user
+    user_id = session.get('user_ID')  # Assuming session contains user_ID
+    cursor.execute("SELECT * FROM orderinfo WHERE user_ID = %s", (user_id,))
+    orders = cursor.fetchall()
+    # Close cursor and connection
+    cursor.close()
+    connection.close()
+    # Render template with orders data
+    return render_template("level3/My_Purchase___All.html", orders=orders)
 
 @app.route("/my_Print")
 def my_Prints():
@@ -945,7 +957,6 @@ def my_Pending_Approval():
     user_id = session.get('user_ID')  # Assuming session contains user_ID
     cursor.execute("SELECT * FROM orderinfo WHERE user_ID = %s", (user_id,))
     orders = cursor.fetchall()
-
     # Close cursor and connection
     cursor.close()
     connection.close()

@@ -321,6 +321,15 @@
 		top: 188px;
 		overflow: visible;
 	}
+	.avatar_preview {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		vertical-align: middle;
+		width: 137px;
+		height: 137px;
+		border-radius: 50%;
+	  }
 	#Profile_Display_cew {
 		position: absolute;
 		width: 371px;
@@ -333,6 +342,7 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Ellipse_8_cex {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 137px;
@@ -1397,6 +1407,7 @@
 		overflow: visible;
 	}
 	#Order_ID_chc {
+		display: none;
 		position: absolute;
 		width: 200px;
 		height: 19px;
@@ -3939,7 +3950,7 @@
 		overflow: visible;
 		--web-animation: fadein undefineds undefined;
 		--web-action-type: page;
-		--web-action-target: Manage_Shop___Shop_Info.html;
+		--web-action-target: my_Account;
 		cursor: pointer;
 	}
 	#Manage_Shop_cm {
@@ -6955,6 +6966,7 @@ window.application = new Application();
 				<ellipse id="Ellipse_8_cex" rx="68.5" ry="68.5" cx="68.5" cy="68.5">
 				</ellipse>
 			</svg>
+			<img src="{{ url_for('static', filename='User_Profiles/default.png') }}" alt="Default" class="avatar_preview">
 			<svg class="Rectangle_60_cey">
 				<rect id="Rectangle_60_cey" rx="0" ry="0" x="0" y="0" width="216" height="36">
 				</rect>
@@ -7817,7 +7829,7 @@ window.application = new Application();
 			</div>
 			<div onclick="application.goToTargetView(event)" id="Component_12__13" class="Component_12___13">
 				<div id="Manage_Shop_cm">
-					<span>Manage Shop</span>
+					<span>Manage Account</span>
 				</div>
 			</div>
 			<div onclick="application.goToTargetView(event)" id="Component_11__13" class="Component_11___13">

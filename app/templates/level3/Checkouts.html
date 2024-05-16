@@ -87,6 +87,15 @@
 		top: 188px;
 		overflow: visible;
 	}
+	.avatar_preview {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		vertical-align: middle;
+		width: 137px;
+		height: 137px;
+		border-radius: 50%;
+	  }
 	#Profile_Display_bbi {
 		position: absolute;
 		width: 371px;
@@ -99,6 +108,7 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Ellipse_8_bbj {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 137px;
@@ -449,6 +459,7 @@
 		overflow: visible;
 	}
 	#View_Shop_Button_bcg {
+		cursor: pointer;
 		position: absolute;
 		width: 146px;
 		height: 37px;
@@ -496,6 +507,7 @@
 		overflow: visible;
 	}
 	#Rate_Button_bck {
+		cursor: pointer;
 		position: absolute;
 		width: 206px;
 		height: 69px;
@@ -1192,6 +1204,7 @@
 		shape-rendering: auto;
 	}
 	.Rectangle_92 {
+		cursor: pointer;
 		position: absolute;
 		overflow: visible;
 		width: 142px;
@@ -1240,6 +1253,7 @@
 		overflow: visible;
 	}
 	#Component_19__1 {
+		cursor: pointer;
 		position: absolute;
 		width: 45px;
 		height: 45px;
@@ -3069,6 +3083,7 @@
 		overflow: visible;
 	}
 	#Check_All {
+		cursor: pointer;
 		position: absolute;
 		width: 45px;
 		height: 45px;
@@ -3144,6 +3159,7 @@
 		color: rgba(239,30,201,1);
 	}
 	#Check_Out_bia {
+		cursor: pointer;
 		position: absolute;
 		width: 242px;
 		height: 112px;
@@ -3437,7 +3453,7 @@
 		overflow: visible;
 		--web-animation: fadein undefineds undefined;
 		--web-action-type: page;
-		--web-action-target: Manage_Shop___Shop_Info.html;
+		--web-action-target: my_Account;
 		cursor: pointer;
 	}
 	#Manage_Shop_bi {
@@ -6352,6 +6368,7 @@ window.application = new Application();
 				<ellipse id="Ellipse_8_bbj" rx="68.5" ry="68.5" cx="68.5" cy="68.5">
 				</ellipse>
 			</svg>
+			<img src="{{ url_for('static', filename='User_Profiles/default.png') }}" alt="Default" class="avatar_preview">
 			<svg class="Rectangle_60_bbk">
 				<rect id="Rectangle_60_bbk" rx="0" ry="0" x="0" y="0" width="216" height="36">
 				</rect>
@@ -6624,7 +6641,7 @@ window.application = new Application();
 					</rect>
 				</svg>
 				<div id="John_Doe__63_912_345_6789_1234_bd">
-					<span>John Doe | (+63) 912 345 6789<br/>1234 Quezon Avenue, Quezon City, Metro Manila, 1008 </span>
+					<span>{{session.username}} | (+63) {{session.phone_number}}<br/>{{session.address_user}}</span>
 				</div>
 				<svg class="Ellipse_17">
 					<ellipse id="Ellipse_17" rx="37.5" ry="38" cx="37.5" cy="38">
@@ -7146,7 +7163,7 @@ window.application = new Application();
 			</div>
 			<div onclick="application.goToTargetView(event)" id="Component_12__9" class="Component_12___9">
 				<div id="Manage_Shop_bi">
-					<span>Manage Shop</span>
+					<span>Manage Account</span>
 				</div>
 			</div>
 			<div id="Component_11__9" class="Component_11___9">

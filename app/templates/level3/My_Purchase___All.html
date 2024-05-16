@@ -337,6 +337,15 @@
 		top: 188px;
 		overflow: visible;
 	}
+	.avatar_preview {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		vertical-align: middle;
+		width: 137px;
+		height: 137px;
+		border-radius: 50%;
+	  }
 	#Profile_Display {
 		position: absolute;
 		width: 371px;
@@ -349,6 +358,7 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Ellipse_8 {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 137px;
@@ -1432,6 +1442,7 @@
 		overflow: visible;
 	}
 	#Order_ID {
+		display: none;
 		position: absolute;
 		width: 200px;
 		height: 19px;
@@ -4089,7 +4100,7 @@
 		overflow: visible;
 		--web-animation: fadein undefineds undefined;
 		--web-action-type: page;
-		--web-action-target: Manage_Shop___Shop_Info.html;
+		--web-action-target: my_Accountl;
 		cursor: pointer;
 	}
 	#Manage_Shop_uw {
@@ -7105,6 +7116,7 @@ window.application = new Application();
 				<ellipse id="Ellipse_8" rx="68.5" ry="68.5" cx="68.5" cy="68.5">
 				</ellipse>
 			</svg>
+			<img src="{{ url_for('static', filename='User_Profiles/default.png') }}" alt="Default" class="avatar_preview">
 			<svg class="Rectangle_60">
 				<rect id="Rectangle_60" rx="0" ry="0" x="0" y="0" width="216" height="36">
 				</rect>
@@ -7351,7 +7363,7 @@ window.application = new Application();
 					</rect>
 				</svg>
 				<div id="John_Doe__63_912_345_6789_1234">
-					<span>John Doe | (+63) 912 345 6789<br/>1234 Quezon Avenue, Quezon City, Metro Manila, 1008 </span>
+					<span>{{session.username}} | (+63) {{session.phone_number}}<br/>{{session.address_user}}</span>
 				</div>
 				<svg class="Ellipse_11">
 					<ellipse id="Ellipse_11" rx="46.5" ry="46.5" cx="46.5" cy="46.5">
@@ -7422,19 +7434,21 @@ window.application = new Application();
 					<img id="ID352513_local_print_shop_icon_pc" src="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_pc.png') }}" srcset="{{ url_for('static', filename='images/ID352513_local_print_shop_icon_pc.png') }} 1x, {{url_for('static', filename='images/ID352513_local_print_shop_icon_pc@2x.png')}} 2x">
 						
 				</div>
-				<div id="Print_Again_Button">
-					<svg class="Rectangle_69_pf">
-						<linearGradient id="Rectangle_69_pf" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-							<stop offset="0" stop-color="#f7b" stop-opacity="1"></stop>
-							<stop offset="1" stop-color="#ff1c8c" stop-opacity="1"></stop>
-						</linearGradient>
-						<rect id="Rectangle_69_pf" rx="10" ry="10" x="0" y="0" width="265" height="72">
-						</rect>
-					</svg>
-					<div id="Print_Again">
-						<span>Print Again</span>
+				<a href="dashboard">
+					<div id="Print_Again_Button">
+						<svg class="Rectangle_69_pf">
+							<linearGradient id="Rectangle_69_pf" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+								<stop offset="0" stop-color="#f7b" stop-opacity="1"></stop>
+								<stop offset="1" stop-color="#ff1c8c" stop-opacity="1"></stop>
+							</linearGradient>
+							<rect id="Rectangle_69_pf" rx="10" ry="10" x="0" y="0" width="265" height="72">
+							</rect>
+						</svg>
+						<div id="Print_Again">
+							<span>Print Again</span>
+						</div>
 					</div>
-				</div>
+				</a>
 				<div onclick="application.goToTargetView(event)" id="Rate_Button">
 					<svg class="Rectangle_69_pj">
 						<linearGradient id="Rectangle_69_pj" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
@@ -8006,7 +8020,7 @@ window.application = new Application();
 			</div>
 			<div onclick="application.goToTargetView(event)" id="Component_12__2" class="Component_12___2">
 				<div id="Manage_Shop_uw">
-					<span>Manage Shop</span>
+					<span>Manage Account</span>
 				</div>
 			</div>
 			<div onclick="application.goToTargetView(event)" id="Component_11__2" class="Component_11___2">
