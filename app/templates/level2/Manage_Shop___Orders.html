@@ -799,6 +799,7 @@
 		top: 90.5px;
 	}
 	#Contact_Number {
+		display: none;
 		left: 0px;
 		top: 90px;
 		position: absolute;
@@ -828,7 +829,7 @@
 		left: 0px;
 		top: 130px;
 		position: absolute;
-		overflow: visible;
+		overflow: hidden;
 		width: 264px;
 		white-space: nowrap;
 		text-align: left;
@@ -837,6 +838,11 @@
 		font-weight: bold;
 		font-size: 20px;
 		color: rgba(52,52,52,1);
+	}
+	#Full_Address:hover {
+		overflow: visible;
+		z-index: 1;
+		cursor: context-menu;
 	}
 	#Delivery_Address_le {
 		left: 0px;

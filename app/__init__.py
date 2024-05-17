@@ -22,12 +22,14 @@ from .utils import random_filename, get_url  # noqa
 
 #: defined normal file type
 allowed_file_extensions = {
-    'all': 'docs/*, docx/*, pdf/*, text/*',
+    'default': 'docs/*, docx/*, pdf/*, text/*',
     'docs': 'docs/*',
     'docx': 'docx/*',
     'pdf': 'pdf/*',
-    'excel': 'xlsx/*'
+    'text': 'text/*',
+   #'app': 'application/*'
 }
+
 
 class _Dropzone(object):
 

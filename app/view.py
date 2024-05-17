@@ -310,7 +310,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app.config.update(
     UPLOADED_PATH=os.path.join(basedir, 'static', 'User_Upload'),
     DROPZONE_MAX_FILE_SIZE=1024,
-    DROPZONE_TIMEOUT=5*60*1000)
+    DROPZONE_TIMEOUT=5*60*1000
+    )
 
 dropzone = Dropzone(app)
 @app.route('/upload', methods=['POST', 'GET'])
