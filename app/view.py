@@ -676,6 +676,7 @@ def my_Purchases():
     user_id = session.get('user_ID')  # Assuming session contains user_ID
     cursor.execute("SELECT * FROM orderinfo WHERE user_ID = %s", (user_id,))
     orders = cursor.fetchall()
+    print(orders)
     # Close cursor and connection
     cursor.close()
     connection.close()
@@ -707,6 +708,7 @@ def my_Account():
         cursor = connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute('SELECT * FROM user WHERE user_ID = %s', (user_id, ))
         user = cursor.fetchone()
+        print(user)
         if user:
             session['phone_number'] = user['phone_number']
     except Exception as e:

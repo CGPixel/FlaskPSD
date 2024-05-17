@@ -1149,6 +1149,13 @@
 		font-size: 12px;
 		color: rgba(255,255,255,1);
 	}
+	#PickUpBtn {
+		cursor: pointer;
+		background-color: transparent;
+		position: absolute;
+		width: 84px;
+		height: 27px;
+	}
 	#Cancel {
 		cursor: pointer;
 		position: absolute;
@@ -1157,6 +1164,13 @@
 		left: 240.673px;
 		top: 62px;
 		overflow: visible;
+	}
+	#CancelBtn {
+		cursor: pointer;
+		background-color: transparent;
+		position: absolute;
+		width: 84px;
+		height: 27px;
 	}
 	#Rectangle_61_mb {
 		fill: url(#Rectangle_61_mb);
@@ -1381,6 +1395,21 @@
 	#View_File_mk {
 		left: 284px;
 		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 66px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		color: rgba(87,232,255,1);
+		text-decoration: underline;
+	}
+	#View_File_mk_Btn {
+		background-color: transparent;
+		cursor: pointer;
 		position: absolute;
 		overflow: visible;
 		width: 66px;
@@ -6816,167 +6845,171 @@ window.application = new Application();
 		</div>
 		<div id="Scroll_Group_3_k">
 			{% for order in orders %}
-			<div id="Sample_Order" class="Sample_Order">
-					<svg class="Line_87_k" viewBox="0 0 1549 1">
-						<path id="Line_87_k" d="M 0 0 L 1549 0">
-						</path>
-					</svg>
-					<div id="Address_Used">
-						<svg class="Full_Name_lb">
-							<rect id="Full_Name_lb" rx="0" ry="0" x="0" y="0" width="166" height="25">
-							</rect>
-							<span id="Full_Name">{{ orders[loop.index - 1][13] }}</span>
-						</svg>
-						<svg class="Contact_Number_lc">
-							<rect id="Contact_Number_lc" rx="0" ry="0" x="0" y="0" width="123" height="17">
-							</rect>
-							<span id="Contact_Number">{{ orders[loop.index - 1][14] }}</span>
-						</svg>
-						<svg class="Full_Address_ld">
-							<rect id="Full_Address_ld" rx="0" ry="0" x="0" y="0" width="263" height="51.004">
-							</rect>
-							<span id="Full_Address">{{ orders[loop.index - 1][15] }}</span>
-						</svg>
-						<div id="Delivery_Address_le">
-							<span>Delivery Address</span>
-						</div>
-						<svg class="Postal_Code_lf">
-							<rect id="Postal_Code_lf" rx="0" ry="0" x="0" y="0" width="89" height="17">
-							</rect>
-						</svg>
-					</div>
-					<svg class="Line_88_lg" viewBox="0 0 1 207.5">
-						<path id="Line_88_lg" d="M 0 0 L 0 207.5">
-						</path>
-					</svg>
-					<div id="Additional_Info_lh">
-						<div id="Order_ID">
-							<div id="Order_ID_lj">
-								<span>Order ID:</span>
-							</div>
-							<svg class="Date_Delivered">
-								<rect id="Date_Delivered" rx="0" ry="0" x="0" y="0" width="86" height="15">
-								</rect>
-							</svg>
-							<span id="Order_id">{{ orders[loop.index - 1][0] }}</span>
-						</div>
-						<div id="Mode_of_Payment_____Gcash_ll">
-							<span>Mode of Payment</span><span style="font-style:normal;font-weight:bold;">     Gcash</span>
-						</div>
-						<div id="Payment_Details_lm">
-							<span>Payment Details</span>
-						</div>
-						<div id="Print_Cost______280">
-							<span>Print Cost</span><span style="font-style:normal;font-weight:bold;color:rgba(52,52,52,1);">      </span><span style="color:rgba(102,102,102,1);">₱280</span>
-						</div>
-						<div id="Shipping_Cost______45_lo">
-							<span>Shipping Cost</span><span style="font-style:normal;font-weight:bold;color:rgba(52,52,52,1);">      </span><span>₱45</span>
-						</div>
-						<div id="Estimated_Total_____325_lp">
-							<span>Estimated Total</span><span style="color:rgba(52,52,52,1);">     </span><span style="color:rgba(243,34,138,1);">₱325</span>
-						</div>
-						<svg class="Line_92_lq" viewBox="0 0 345 1">
-							<path id="Line_92_lq" d="M 345 0 L 0 0">
+				{% if orders[loop.index - 1][10] == "Pending" %}
+				<div id="Sample_Order" class="Sample_Order">
+						<svg class="Line_87_k" viewBox="0 0 1549 1">
+							<path id="Line_87_k" d="M 0 0 L 1549 0">
 							</path>
 						</svg>
-						<div id="Status_lr">
-							<div id="Printing">
-								<span>Printing</span>
-							</div>
-							<svg class="User_name_lt">
-								<rect id="User_name_lt" rx="0" ry="0" x="0" y="0" width="116" height="14">
+						<div id="Address_Used">
+							<svg class="Full_Name_lb">
+								<rect id="Full_Name_lb" rx="0" ry="0" x="0" y="0" width="166" height="25">
 								</rect>
-								<span id="User_name">{{ orders[loop.index - 1][29] }}</span>
+								<span id="Full_Name">{{ orders[loop.index - 1][13] }}</span>
 							</svg>
-							<div id="Message_Button_lu">
-								<svg class="Rectangle_69_lv">
-									<rect id="Rectangle_69_lv" rx="0" ry="0" x="0" y="0" width="70" height="19">
-									</rect>
-								</svg>
-								<img id="ID2849821_multimedia_social_sp_lw" src="{{ url_for('static', filename='images/ID2849821_multimedia_social_sp_lw.png') }}" srcset="{{url_for('static', filename='images/ID2849821_multimedia_social_sp_lw.png') }} 1x, {{url_for('static', filename='images/ID2849821_multimedia_social_sp_lw@2x.png')}} 2x">
-									
-								<div id="Message_lx">
-									<span>Message</span>
-								</div>
+							<svg class="Contact_Number_lc">
+								<rect id="Contact_Number_lc" rx="0" ry="0" x="0" y="0" width="123" height="17">
+								</rect>
+								<span id="Contact_Number">{{ orders[loop.index - 1][14] }}</span>
+							</svg>
+							<svg class="Full_Address_ld">
+								<rect id="Full_Address_ld" rx="0" ry="0" x="0" y="0" width="263" height="51.004">
+								</rect>
+								<span id="Full_Address">{{ orders[loop.index - 1][15] }}</span>
+							</svg>
+							<div id="Delivery_Address_le">
+								<span>Delivery Address</span>
 							</div>
-							<div id="For_Pickup">
-								<svg class="Rectangle_61_l">
-									<linearGradient id="Rectangle_61_l" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-										<stop offset="0" stop-color="#ff74d0" stop-opacity="1"></stop>
-										<stop offset="1" stop-color="#ec10c8" stop-opacity="1"></stop>
-									</linearGradient>
-									<rect id="Rectangle_61_l" rx="0" ry="0" x="0" y="0" width="83.327" height="26.736">
-									</rect>
-								</svg>
-								<div id="For_Pickup_l">
-									<span>For Pickup</span>
-								</div>
-							</div>
-							<div id="Cancel">
-								<svg class="Rectangle_61_mb">
-									<linearGradient id="Rectangle_61_mb" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
-										<stop offset="0" stop-color="#717171" stop-opacity="1"></stop>
-										<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
-									</linearGradient>
-									<rect id="Rectangle_61_mb" rx="0" ry="0" x="0" y="0" width="83.327" height="26.736">
-									</rect>
-								</svg>
-								<div id="Cancel_l">
-									<span>Cancel</span>
-								</div>
-							</div>
+							<svg class="Postal_Code_lf">
+								<rect id="Postal_Code_lf" rx="0" ry="0" x="0" y="0" width="89" height="17">
+								</rect>
+							</svg>
 						</div>
-					</div>
-					<svg class="Line_89_l" viewBox="0 0 1 207.5">
-						<path id="Line_89_l" d="M 0 0 L 0 207.5">
-						</path>
-					</svg>
-					<div id="Order_Details_l">
-						<div id="Order_Details_ma">
-							<span>Order Details</span>
-						</div>
-						<svg class="Rectangle_80_l">
-							<rect id="Rectangle_80_l" rx="29" ry="29" x="0" y="0" width="712" height="148">
-							</rect>
-						</svg>
-						<div id="Paper_Size____Letter_85_x_11_ma">
-							<span>Paper Size    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][20]}}</span>
-						</div>
-						<div id="Print_Pages___All_Pages__mb">
-							<span>Print Pages   </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][21]}} </span>
-						</div>
-						<div id="Print_Sides____Print_One_Sided_mc">
-							<span>Print Sides    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][22]}} </span>
-						</div>
-						<div id="Orientation____Portrait__md">
-							<span>Orientation    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][23]}} </span>
-						</div>
-						<div id="Paper_Type___Plain_Paper__me">
-							<span>Paper Type   </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][24]}} </span>
-						</div>
-						<svg class="Line_91_mf" viewBox="0 0 1 125">
-							<path id="Line_91_mf" d="M 0 0 L 0 125">
+						<svg class="Line_88_lg" viewBox="0 0 1 207.5">
+							<path id="Line_88_lg" d="M 0 0 L 0 207.5">
 							</path>
 						</svg>
-						<div id="Copies_____________________10_mg">
-							<span>Copies                     </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][25]}}</span>
-						</div>
-						<div id="Grayscale_Printing___No__mh">
-							<span>Grayscale Printing   </span><span style="font-style:normal;font-weight:bold;">{{ 'Yes' if orders[loop.index - 1][26] == '1' else 'No' }} </span>
-						</div>
-						<div id="File_mi">
-							<div id="Filename__________________assi_mj">
-								<span>Filecount                  </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][36]}} </span>
+						<div id="Additional_Info_lh">
+							<div id="Order_ID">
+								<div id="Order_ID_lj">
+									<span>Order ID:</span>
+								</div>
+								<svg class="Date_Delivered">
+									<rect id="Date_Delivered" rx="0" ry="0" x="0" y="0" width="86" height="15">
+									</rect>
+								</svg>
+								<span id="Order_id">{{ orders[loop.index - 1][0] }}</span>
 							</div>
-							<div id="View_File_mk">
-								<span>View File</span>
+							<div id="Mode_of_Payment_____Gcash_ll">
+								<span>Mode of Payment</span><span style="font-style:normal;font-weight:bold;">     CoD</span>
+							</div>
+							<div id="Payment_Details_lm">
+								<span>Payment Details</span>
+							</div>
+							<div id="Print_Cost______280">
+								<span>Print Cost</span><span style="font-style:normal;font-weight:bold;color:rgba(52,52,52,1);">      </span><span style="color:rgba(102,102,102,1);">₱280</span>
+							</div>
+							<div id="Shipping_Cost______45_lo">
+								<span>Shipping Cost</span><span style="font-style:normal;font-weight:bold;color:rgba(52,52,52,1);">      </span><span>₱0</span>
+							</div>
+							<div id="Estimated_Total_____325_lp">
+								<span>Estimated Total</span><span style="color:rgba(52,52,52,1);">     </span><span style="color:rgba(243,34,138,1);">₱238</span>
+							</div>
+							<svg class="Line_92_lq" viewBox="0 0 345 1">
+								<path id="Line_92_lq" d="M 345 0 L 0 0">
+								</path>
+							</svg>
+							<div id="Status_lr">
+								<div id="Printing">
+									<span>Printing</span>
+								</div>
+								<svg class="User_name_lt">
+									<rect id="User_name_lt" rx="0" ry="0" x="0" y="0" width="116" height="14">
+									</rect>
+									<span id="User_name">{{ orders[loop.index - 1][29] }}</span>
+								</svg>
+								<div id="Message_Button_lu">
+									<svg class="Rectangle_69_lv">
+										<rect id="Rectangle_69_lv" rx="0" ry="0" x="0" y="0" width="70" height="19">
+										</rect>
+									</svg>
+									<img id="ID2849821_multimedia_social_sp_lw" src="{{ url_for('static', filename='images/ID2849821_multimedia_social_sp_lw.png') }}" srcset="{{url_for('static', filename='images/ID2849821_multimedia_social_sp_lw.png') }} 1x, {{url_for('static', filename='images/ID2849821_multimedia_social_sp_lw@2x.png')}} 2x">
+										
+									<div id="Message_lx">
+										<span>Message</span>
+									</div>
+								</div>
+									<div id="For_Pickup">
+										<svg class="Rectangle_61_l">
+											<linearGradient id="Rectangle_61_l" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+												<stop offset="0" stop-color="#ff74d0" stop-opacity="1"></stop>
+												<stop offset="1" stop-color="#ec10c8" stop-opacity="1"></stop>
+											</linearGradient>
+											<rect id="Rectangle_61_l" rx="0" ry="0" x="0" y="0" width="83.327" height="26.736">
+											</rect>
+										</svg>
+										<div id="For_Pickup_l">
+											<span>For Pickup</span>
+										</div>
+										<button id="PickUpBtn" onclick="updateOrderStatus({{ orders[loop.index - 1][0] }})"></button>
+									</div>
+								<div id="Cancel">
+									<svg class="Rectangle_61_mb">
+										<linearGradient id="Rectangle_61_mb" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+											<stop offset="0" stop-color="#717171" stop-opacity="1"></stop>
+											<stop offset="1" stop-color="#000" stop-opacity="1"></stop>
+										</linearGradient>
+										<rect id="Rectangle_61_mb" rx="0" ry="0" x="0" y="0" width="83.327" height="26.736">
+										</rect>
+									</svg>
+									<div id="Cancel_l">
+										<span>Cancel</span>
+									</div>
+									<button id="CancelBtn" onclick="updateOrderStatus({{ orders[loop.index - 1][0] }})"></button>
+								</div>
 							</div>
 						</div>
-						<div id="Print_Service__Documents__ml">
-							<span>Print Service  </span><span style="font-style:normal;font-weight:bold;color:rgba(243,34,138,1);">Documents </span>
+						<svg class="Line_89_l" viewBox="0 0 1 207.5">
+							<path id="Line_89_l" d="M 0 0 L 0 207.5">
+							</path>
+						</svg>
+						<div id="Order_Details_l">
+							<div id="Order_Details_ma">
+								<span>Order Details</span>
+							</div>
+							<svg class="Rectangle_80_l">
+								<rect id="Rectangle_80_l" rx="29" ry="29" x="0" y="0" width="712" height="148">
+								</rect>
+							</svg>
+							<div id="Paper_Size____Letter_85_x_11_ma">
+								<span>Paper Size    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][20]}}</span>
+							</div>
+							<div id="Print_Pages___All_Pages__mb">
+								<span>Print Pages   </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][21]}} </span>
+							</div>
+							<div id="Print_Sides____Print_One_Sided_mc">
+								<span>Print Sides    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][22]}} </span>
+							</div>
+							<div id="Orientation____Portrait__md">
+								<span>Orientation    </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][23]}} </span>
+							</div>
+							<div id="Paper_Type___Plain_Paper__me">
+								<span>Paper Type   </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][24]}} </span>
+							</div>
+							<svg class="Line_91_mf" viewBox="0 0 1 125">
+								<path id="Line_91_mf" d="M 0 0 L 0 125">
+								</path>
+							</svg>
+							<div id="Copies_____________________10_mg">
+								<span>Copies                     </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][25]}}</span>
+							</div>
+							<div id="Grayscale_Printing___No__mh">
+								<span>Grayscale Printing   </span><span style="font-style:normal;font-weight:bold;">{{ 'Yes' if orders[loop.index - 1][26] == '1' else 'No' }} </span>
+							</div>
+							<div id="File_mi">
+								<div id="Filename__________________assi_mj">
+									<span>Filecount                  </span><span style="font-style:normal;font-weight:bold;">{{orders[loop.index - 1][36]}}</span>
+								</div>
+								<div id="View_File_mk">
+									<button id="View_File_mk_Btn" onclick="viewFiles({{ orders[loop.index - 1][0] }})">View Files</button>
+								</div>
+							</div>
+							<div id="Print_Service__Documents__ml">
+								<span>Print Service  </span><span style="font-style:normal;font-weight:bold;color:rgba(243,34,138,1);">Documents </span>
+							</div>
 						</div>
 					</div>
-				</div>
+				{% endif %}
 			{% endfor %}
 			<!--<div id="Sample_Order_mm" class="Sample_Order">
 				<svg class="Line_87_mn" viewBox="0 0 1549 1">
@@ -7592,5 +7625,56 @@ window.application = new Application();
 		</div>
 	</div>
 </div>
+<script>
+	function viewFiles(orderID) {
+		console.log('viewFiles called with orderID:', orderID);
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', '/download-documents/' + orderID, true);
+		xhr.responseType = 'json'; // Assuming the server returns JSON
+		xhr.onload = function() {
+			if (this.status == 200) {
+				console.log('Documents fetched successfully:', this.response);
+				var fileUrls = this.response; // Access the array of file URLs directly
+				fileUrls.forEach(function(fileUrl) {
+					// Ensure fileUrl is not empty
+					if (fileUrl) {
+						var link = document.createElement('a');
+						link.href = fileUrl;
+						link.setAttribute('download', ''); // Set the download attribute to trigger download
+						document.body.appendChild(link); // Append link to body (necessary for Firefox)
+						link.click(); // Start download
+						document.body.removeChild(link); // Remove link after download
+					} else {
+						console.warn('Skipping document with missing file_url:', fileUrl);
+					}
+				});
+			} else {
+				console.error('Failed to fetch documents, status:', this.status);
+			}
+		};
+		xhr.onerror = function() {
+			console.error('Request failed');
+		};
+		xhr.send();
+	}
+	function updateOrderStatus(orderID) {
+		alert(orderID)
+		var orders = []; // Define orders here
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/finish-order-status/' + orderID, true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.onload = function() {
+			if (this.status == 200) {
+				console.log(this.responseText);
+				alert('Order status updated successfully.');
+				onwindow
+			} else {
+				console.error('Failed to update order status.');
+			}
+		};
+		xhr.send();
+	}
+</script>
 </body>
 </html>

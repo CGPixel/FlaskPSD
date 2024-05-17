@@ -1739,6 +1739,43 @@
 		top: 21px;
 		overflow: visible;
 	}
+	#Shop_Analytics_Button {
+		position: absolute;
+		width: 298px;
+		height: 68px;
+		left: 450px;
+		top: 272px;
+		overflow: visible;
+		--web-animation: fadein undefineds undefined;
+		--web-action-type: page;
+		--web-action-target: analytics;
+		cursor: pointer;
+	}
+	#Rectangle_119_ee {
+		fill: url(#Rectangle_119_ee);
+	}
+	.Rectangle_119_ee {
+		position: absolute;
+		overflow: visible;
+		width: 298px;
+		height: 68px;
+		left: 0px;
+		top: 0px;
+	}
+	#Shop_Analytics {
+		left: 23px;
+		top: 15px;
+		position: absolute;
+		overflow: visible;
+		width: 253px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Arial;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 35px;
+		color: rgba(255,255,255,1);
+	}
 </style>
 <script id="applicationScript">
 ///////////////////////////////////////
@@ -4980,7 +5017,19 @@ if (window.console==null) { window["console"] = { log : function() {} } }; // so
 				<span>Total: P 0</span>
 			</div>
 			<img id="ID2205221_bill_buy_cash_money__bmo" src="{{ url_for('static', filename='images/ID2205221_bill_buy_cash_money__bmo.png') }}" srcset="{{url_for('static', filename='images/ID2205221_bill_buy_cash_money__bmo.png') }} 1x, {{url_for('static', filename='images/ID2205221_bill_buy_cash_money__bmo@2x.png')}} 2x">
-				
+		</div>
+	</div>
+	<div onclick="application.goToTargetView(event)" id="Shop_Analytics_Button">
+		<svg class="Rectangle_119_ee">
+			<linearGradient id="Rectangle_119_ee" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+				<stop offset="0" stop-color="#fc72b7" stop-opacity="1"></stop>
+				<stop offset="1" stop-color="#f71b88" stop-opacity="1"></stop>
+			</linearGradient>
+			<rect id="Rectangle_119_ee" rx="0" ry="0" x="0" y="0" width="298" height="68">
+			</rect>
+		</svg>
+		<div id="Shop_Analytics">
+			<span>Shop Analytics</span>
 		</div>
 	</div>
 </div>

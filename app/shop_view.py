@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request, redirect, url_for, session, flash
+from flask import render_template, request, redirect, url_for, session, flash, jsonify
 import MySQLdb, MySQLdb.cursors, re, os
 from flask_mysqldb import MySQL
 
@@ -90,7 +90,7 @@ def shop_sign_in():
                 return redirect(url_for("shop_dashboard")) # Redirect to Printing Shop Dashboard
             elif user['user_level'] == 'Customer':
                 message = 'Logged in successfully as a Customer!'
-                return redirect(url_for("Dashboard")) # Redirect to Customer Dashboard
+                return redirect(url_for("dashboard")) # Redirect to Customer Dashboard
         else:
             return redirect(url_for('shop_sign_in', incorrect=True))
     return render_template("level2/Login_Register.html", message=message)
@@ -350,10 +350,46 @@ def shop_orders():
     # Fetch order data from the database based on user_ID
     cursor.execute("SELECT orders.*, user.*, orderinfo.*, printingshops.*, (SELECT COUNT(*) FROM documents WHERE orders.order_ID = documents.info_ID) AS num_documents FROM orders INNER JOIN user ON orders.user_ID = user.user_ID INNER JOIN orderinfo ON orders.info_ID = orderinfo.Info_ID INNER JOIN printingshops ON orders.shop_ID = printingshops.user_ID WHERE orders.shop_ID = %s GROUP BY orders.order_ID", (shop_ID,))
     orders = cursor.fetchall()
-    print(orders)
     # Close the database connection
     cursor.close()
     db_connection.close()
     
     # Render the template with the fetched data
     return render_template("level2/Manage_Shop___Orders.html", orders=orders)
+
+@app.route('/download-documents/<int:order_id>', methods=['GET'])
+def download_documents(order_id):
+    # Query the database for file_urls associated with the order_id
+    db_connection = get_db_connection()
+    cursor = db_connection.cursor()
+    cursor.execute("SELECT file_url FROM documents WHERE info_ID IN (SELECT order_ID FROM orders WHERE order_ID = %s) AND file_url IS NOT NULL AND file_url != ''", (order_id,))
+    rows = cursor.fetchall()
+
+    # Check if rows is None
+    if rows is not None:
+        file_urls = [row[0] for row in rows]  # Extracting the file_url values
+    else:
+        file_urls = []
+
+    cursor.close()
+    db_connection.close()
+    print(file_urls)
+    # Return the file_urls as JSON
+    return jsonify(file_urls)
+
+@app.route('/finish-order-status/<int:order_id>', methods=['POST'])
+def finish_order_status(order_id):
+    # Update the order status in the database
+    db_connection = get_db_connection()
+    cursor = db_connection.cursor()
+    print(order_id)
+    cursor.execute("UPDATE orders SET status = 'Finished' WHERE order_ID = %s", (order_id,))
+    db_connection.commit()
+    cursor.close()
+    db_connection.close()
+    # Return a plain text success message with a 200 OK status code
+    return "Order status updated successfully.", 200
+
+@app.route("/shop/analytics")
+def shop_analytics():
+    return render_template("level2/Shop_Analytics_Page.html")

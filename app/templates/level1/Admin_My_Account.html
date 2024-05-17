@@ -377,6 +377,14 @@
 		font-size: 96px;
 		color: rgba(70,70,70,1);
 	}
+	.avatar {
+		position: absolute;
+		left: 0px;
+		vertical-align: middle;
+		width: 308px;
+		height: 308px;
+		border-radius: 50%;
+	}
 	#Change_DP {
 		position: absolute;
 		width: 756.093px;
@@ -389,6 +397,7 @@
 		fill: rgba(229,217,217,1);
 	}
 	.Ellipse_15 {
+		display: none;
 		position: absolute;
 		overflow: visible;
 		width: 307.41px;
@@ -3633,6 +3642,7 @@ window.application = new Application();
 			<ellipse id="Ellipse_15" rx="153.7049102783203" ry="153.7049102783203" cx="153.7049102783203" cy="153.7049102783203">
 			</ellipse>
 		</svg>
+		<img src="{{ url_for('static', filename='User_Profiles/default.png') }}" alt="Avatar" class="avatar">
 		<div id="Select_Image">
 			<svg class="Rectangle_73">
 				<rect id="Rectangle_73" rx="0" ry="0" x="0" y="0" width="250.901" height="80.243">
